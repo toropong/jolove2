@@ -22,3 +22,6 @@ Route::get('/login', 'LoginController@login');
 Route::get('/index', function () {
     return view('index');
 });
+Route::get('/register', function () {
+    return view('register');
+});
