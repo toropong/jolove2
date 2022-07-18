@@ -5,14 +5,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="">홈</a></li>
-                <li class="nav-item"><a class="nav-link" href="/index">작품 소개</a></li>
+                <li class="nav-item"><a class="nav-link" href="index">작품 소개</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">작품 리스트</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                         <li><a class="dropdown-item" href=""> 학년도</a></li>
                                             </ul>
                                         </li>
-                                        <li class="nav-item"><a class="nav-link" href="/login">로그인</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="login">로그인</a></li>
                                         <li class="nav-item"><a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">작품등록</a></li>
                                     </ul>
                                 </div>

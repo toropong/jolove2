@@ -7,22 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>log in</title>
     <link href="css/login.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    {{-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"> --}}
 </head>
 
 <body>
     <div class="login-box">
-    <form class="login-form">
-        <h1>LogIn</h1>
-        <input class="login_inform" id="login_id" type="text" placeholder="id" autocomplete="username" onkeypress="enterkey()" autofocus />
-        <div id="login_blank"></div>
-        <input class="login_inform" id="login_pw" type="password" placeholder="password" autocomplete="current-password" onkeypress="enterkey()" />
-        <div id="login_blank1"></div>
-        <input class="login_bt" type="button" value="로그인" onclick="login_message()" />
-    </form>
-    </div>
+        <form class="login-form">
+            <h1 class="logo">LogIn</h1>
+            <input class="login_inform" id="login_id" type="text" placeholder="id" autocomplete="username" onkeypress="enterkey()" autofocus />
+            <div id="login_blank"></div>
+            <input class="login_inform" id="login_pw" type="password" placeholder="password" autocomplete="current-password" onkeypress="enterkey()" />
+            <div id="login_blank1"></div>
+            <ul>
+                <li><a href="#">아이디/비밀번호찾기</a></li>
+                <li><a href="#">회원가입</a></li>
+              </ul>
+            <input class="login_bt" type="button" value="로그인" onclick="login_message()" />
+        </form>
+        </div> 
 </body>
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+{{-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 
     function enterkey() {
@@ -85,5 +89,5 @@
 
         return false;
     }
-</script>
+</script> --}}
 </html>
