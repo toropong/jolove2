@@ -64,6 +64,10 @@ body {
 .login_bt:hover{
     background-position: right;
 }
+.login_blank{
+    padding: 20px;
+}
+
 .textForm {
     border-bottom: 2px solid #adadad;
     margin: 30px;
