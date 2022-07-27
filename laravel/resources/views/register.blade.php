@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <link href="css/register.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <form action="doJoin" method="POST" class="joinForm" onsubmit="DoJoinForm__submit(this); return false;">
+    <form action="doJoin" method="POST" class="joinForm" onsubmit="return checkIt();">
                                                                                                
         <h2>회원가입</h2>
         <div class="textForm">
@@ -21,7 +22,7 @@
         </div>
         <div class="check_div" id="pw_check" value=""></div>
          <div class="textForm">
-          <input name="loginPwConfirm" type="password" class="pw" placeholder="비밀번호 확인">
+          <input name="loginPwConfirm" id="pw_pw" type="password" class="pw" placeholder="비밀번호 확인">
         </div>
         <div class="check_div" id="re_pw_check" value=""></div>
         <div class="textForm">
@@ -33,13 +34,16 @@
         </div>
         <div class="check_div" id="email_check" value=""></div>
         <div class="textForm">
-          <input name="nickname" type="text" class="nickname" placeholder="닉네임">
+          <input name="nickname" id="nickname" type="text" class="nickname" placeholder="닉네임">
         </div>
+        <div class="check_div" id="nickname_check" value=""></div>
         <div class="textForm">
-          <input name="cellphoneNo" id="c_num" type="number" class="cellphoneNo" placeholder="전화번호">
+          <input name="cellphoneNo" id="c_num" type="text" class="cellphoneNo" placeholder="전화번호">
         </div>
+        <div class="check_div" id="phonenum_check" value=""></div>
         <input type="submit" class="btn" value="J O I N"/>
       </form>
 </body>
 </html>
 
+<script type="text/javascript" src="js/register.js" charset="utf-8"></script>
