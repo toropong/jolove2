@@ -23,7 +23,8 @@
                 <input name="loginPw" type="password" class="pw" id=login_pw placeholder="비밀번호">
             </div>
             <ul>
-                <li><a href="#">아이디/비밀번호찾기</a></li>
+                <li><a href="findid">아이디찾기</a></li>
+                <li><a href="findpw">비밀번호찾기</a></li>
                 <li><a href="register">회원가입</a></li>
               </ul>
               <div class="login_blank" id="login_blank"></div>

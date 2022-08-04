@@ -27,10 +27,16 @@ body {
     display: inline-block;
     height: 12px; line-height: 12px;
 }
-.login-box li:last-child{
+
+ .login-box li:last-child{
     border-left: 1px solid #333;
-    padding-left: 10px; /* 테두리 안쪽 여백 */
-    margin-left: 4px; /* 테두리 바깥쪽 여백 */
+    padding-left: 10px; 
+    margin-left: 4px; 
+}
+.login-box li:first-child{
+    border-right: 1px solid #333;
+    padding-right: 10px;
+    margin-right: 4px; 
 }
 .login-box a{
        /* 글자관련은 보통 최종태그에 줘야 적용 */
@@ -62,6 +68,46 @@ body {
     display:inline;
 }
 .login_bt:hover{
+    background-position: right;
+}
+.find_bt{
+    position:relative;
+    left:20%;
+    transform: translateX(-50%);
+    margin-bottom: 40px;
+    width:40%;
+    height:40px;
+    background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+    background-position: left;
+    background-size: 200%;
+    color:white;
+    font-weight: bold;
+    border:none;
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+}
+.find_bt:hover{
+    background-position: right;
+}
+.find_bt2{
+    position:relative;
+    left:20%;
+    transform: translateX(-50%);
+    margin-bottom: 40px;
+    width:40%;
+    height:40px;
+    background: linear-gradient(125deg,#81ecec,#6c5ce7,#81ecec);
+    background-position: left;
+    background-size: 200%;
+    color:white;
+    font-weight: bold;
+    border:none;
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+}
+.find_bt2:hover{
     background-position: right;
 }
 .login_blank{

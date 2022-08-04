@@ -25,3 +25,9 @@ Route::get('/index', function () {
 Route::get('/register', function () {
     return view('register');
 });
+Route::get('/product', function () {
+    return view('product');
+});
+Route::get('/findid', function () {
+    return view('findid');
+});
