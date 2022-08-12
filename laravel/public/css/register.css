@@ -35,7 +35,7 @@
   }
   
   
-  .id {
+  .userId {
     width: 100%;
     border:none;
     outline:none;
@@ -45,7 +45,7 @@
     background: none;
   }
   
-  .pw {
+  .password {
     width: 100%;
     border:none;
     outline:none;

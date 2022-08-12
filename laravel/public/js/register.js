@@ -50,24 +50,24 @@ function checkIt(){
     }
     //-------------------PW 예외처리
     //2. 공백
-    if($("#pw").val()==''){
+    if($("#password").val()==''){
       $('#pw_check').text('비밀번호를 입력해주세요.');
       $('#pw_check').css('color', 'red');
-      $("#pw").focus();
+      $("#password").focus();
       return false;
     }
     //3. 정규식 일치 X
-    if(!pwJ.test($("#pw").val())){
+    if(!pwJ.test($("#password").val())){
       $('#pw_check').text('8~16자리의 영문 대소문자, 숫자와 특수기호만 사용가능합니다. ');
       $('#pw_check').css('color', 'red');
-      $("#pw").focus();
+      $("#password").focus();
       return false;
     }
     //-------------------PW 확인 예외처리
     //1. 공백이 아닐 경우
-    if($("#pw").val() != "" || $("#check").val() != "")
+    if($("#password").val() != "" || $("#check").val() != "")
     {
-      if($("#pw").val() != $("#pw_pw").val()){
+      if($("#password").val() != $("#pw_pw").val()){
         $('#re_pw_check').text('비밀번호가 일치하지 않습니다.');
         $('#re_pw_check').css('color', 'red');
         $("#check").focus();
@@ -75,7 +75,7 @@ function checkIt(){
       }
     }
     //2. 공백일 경우
-    if($("#pw").val() == "" || $("#check").val() == ""){
+    if($("#password").val() == "" || $("#check").val() == ""){
       $('#re_pw_check').text('필수 정보입니다.');
       $('#re_pw_check').css('color', 'red');
       $("#check").focus();
@@ -100,17 +100,17 @@ function checkIt(){
       $("#name").focus();
       return false;
     }
-    if($('#c_email').val()==""){
+    if($('#email').val()==""){
       $('#email_check').text("필수 정보입니다.");
       $('#email_check').css('color', 'red');
-      $("#c_email").focus();
+      $("#email").focus();
       return false;
     }
         //정규식 일치xx
-    if(!verifyJ.test($('#c_email').val())){
+    if(!verifyJ.test($('#email').val())){
       $('#email_check').text("알맞는 이메일 유형이 아닙니다.");
       $('#email_check').css('color', 'red');
-      $("#c_email").focus();
+      $("#email").focus();
       return false;
     }
     if($('#c_email').val()!==""){
@@ -161,6 +161,7 @@ function checkIt(){
     // }
 
     else{
-      return true;
+      alert('가입이완료되었습니다.');
+      return redirect('/');
     }
   }

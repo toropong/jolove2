@@ -31,3 +31,6 @@ Route::get('/product', function () {
 Route::get('/findid', function () {
     return view('findid');
 });
+
+//  Route::get('register', [RegisterController::class, 'index']) -> name('register');
+Route::post('/register', 'RegisterController@store');

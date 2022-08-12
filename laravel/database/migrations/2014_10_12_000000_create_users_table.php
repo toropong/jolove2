@@ -14,15 +14,8 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->comment('이름');
-            $table->string('user_id')->comment('아이디')->default('');
-            $table->string('age')->comment('나이')->default('');
-            $table->string('email')->comment('이메일');
-            $table->unsignedInteger('user_level')->comment('권한')->default(0);
-            $table->string('password')->comment('비밀번호');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('c_num')->comment('전화번호')->default('');
+            $table->string('nickname')->comment('닉네임')->default('');
         });
     }
 
@@ -33,6 +26,9 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
-    }
+        Schema::table('users', function (Blueprint $table) {
+        $table->dropColumn('c_num');
+        $table->dropColumn('nickname');
+    });
+}
 }

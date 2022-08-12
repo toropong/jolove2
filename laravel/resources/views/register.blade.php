@@ -9,20 +9,20 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="doJoin" method="POST" class="joinForm" onsubmit="return checkIt();">
-                                                                                               
+    <form action="register" method="POST" class="joinForm" onsubmit="return checkIt();">
+                 @csrf                                                                              
         <h2>회원가입</h2>
         <div class="textForm">
-          <input name="loginId" type="text" id="id" class="id" placeholder="아이디">
+          <input name="loginId" type="text" id="userId" class="userId" placeholder="아이디">
           </input>
         </div>
         <div class="check_div" id="id_check" value=""></div>
         <div class="textForm">
-          <input name="loginPw" type="password" id="pw" class="pw" placeholder="비밀번호">
+          <input name="loginPw" type="password" id="password" class="password" placeholder="비밀번호">
         </div>
         <div class="check_div" id="pw_check" value=""></div>
          <div class="textForm">
-          <input name="loginPwConfirm" id="pw_pw" type="password" class="pw" placeholder="비밀번호 확인">
+          <input name="loginPwConfirm" id="pw_pw" type="password" class="password" placeholder="비밀번호 확인">
         </div>
         <div class="check_div" id="re_pw_check" value=""></div>
         <div class="textForm">
@@ -30,7 +30,7 @@
         </div>
         <div class="check_div" id="name_check" value=""></div>
          <div class="textForm">
-          <input name="email" id="c_email" type="text" class="email" placeholder="이메일">
+          <input name="email" id="email" type="email" class="email" placeholder="이메일">
         </div>
         <div class="check_div" id="email_check" value=""></div>
         <div class="textForm">
