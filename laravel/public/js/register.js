@@ -48,6 +48,9 @@ function checkIt(){
       $("#id").focus();
       return false;
     }
+   
+
+    }
     //-------------------PW 예외처리
     //2. 공백
     if($("#password").val()==''){
@@ -165,3 +168,12 @@ function checkIt(){
       return redirect('/');
     }
   }
+
+  $(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+});
+

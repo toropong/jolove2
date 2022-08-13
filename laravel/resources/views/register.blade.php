@@ -13,12 +13,12 @@
                  @csrf                                                                              
         <h2>회원가입</h2>
         <div class="textForm">
-          <input name="loginId" type="text" id="userId" class="userId" placeholder="아이디">
+          <input name="userId" type="text" id="userId" class="userId" placeholder="아이디">
           </input>
         </div>
         <div class="check_div" id="id_check" value=""></div>
         <div class="textForm">
-          <input name="loginPw" type="password" id="password" class="password" placeholder="비밀번호">
+          <input name="password" type="password" id="password" class="password" placeholder="비밀번호">
         </div>
         <div class="check_div" id="pw_check" value=""></div>
          <div class="textForm">
@@ -38,7 +38,7 @@
         </div>
         <div class="check_div" id="nickname_check" value=""></div>
         <div class="textForm">
-          <input name="cellphoneNo" id="c_num" type="text" class="cellphoneNo" placeholder="전화번호">
+          <input name="c_num" id="c_num" type="text" class="cellphoneNo" placeholder="전화번호">
         </div>
         <div class="check_div" id="phonenum_check" value=""></div>
         <input type="submit" class="btn" value="J O I N"/>
@@ -47,3 +47,5 @@
 </html>
 
 <script type="text/javascript" src="js/register.js" charset="utf-8"></script>
+
+
