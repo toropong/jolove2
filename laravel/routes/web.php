@@ -34,3 +34,6 @@ Route::get('/findid', function () {
 
 //  Route::get('register', [RegisterController::class, 'index']) -> name('register');
 Route::post('/register', 'RegisterController@store');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
