@@ -13,7 +13,7 @@
                  @csrf                                                                              
         <h2>회원가입</h2>
         <div class="textForm">
-          <input name="userId" type="text" id="userId" class="userId" placeholder="아이디">
+          <input name="userid" type="text" id="userid" class="userid" placeholder="아이디">
           </input>
         </div>
         <div class="check_div" id="id_check" value=""></div>
