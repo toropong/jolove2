@@ -24,7 +24,7 @@
                             {{-- <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __('userid') }}</label> --}}
 
                             <div class="textForm">
-                                <input id="userid" type="text" class="form-control @error('userid') is-invalid @enderror" name="userid" value="{{ old('userid') }}" required autocomplete="userid" autofocus>
+                                <input id="userid" type="text" class="form-control @error('userid') is-invalid @enderror" name="userid" value="{{ old('userid') }}" required autocomplete="userid" autofocus placeholder="아이디">
 
                                 {{-- @error('userid')
                                     <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                             <div class="textForm">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="비밀번호">
                                 {{-- @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

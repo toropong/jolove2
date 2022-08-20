@@ -12,8 +12,12 @@
                         <li><a class="dropdown-item" href=""> 학년도</a></li>
                                             </ul>
                                         </li>
-                                        <li class="nav-item"><a class="nav-link" href="login">로그인</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">작품등록</a></li>
+                                        @auth
+                <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">로그아웃</a></li>
+                <li class="nav-item"><a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">작품등록</a></li>
+@else
+                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">로그인</a></li>
+                @endif
                                     </ul>
                                 </div>
                             </div>
