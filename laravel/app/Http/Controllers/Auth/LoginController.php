@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -37,4 +37,11 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-}
+    
+    // 아래의 username을 추가하여 이메일 로그인에서 아이디 로그인으로 변경.
+    public function username()
+    {
+        return 'userid'; // 필드의 네임을 여러분의 선택.
+    }
+ }
+
