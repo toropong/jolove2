@@ -24,14 +24,14 @@ Route::get('/login', 'LoginController@login');
 
 Route::get('/index',[WorkController::class, 'index']); 
 
-Route::get('/product/{no}',[WorkController::class, 'product']); 
+Route::get('/product/{no}','WorkController@product'); 
 
 Route::get('/register', function () {
     return view('register');
 });
-Route::get('/product', function () {
-    return view('product');
-});
+// Route::get('/product', function () {
+//     return view('product');
+// });
 Route::get('/findid', function () {
     return view('findid');
 });
