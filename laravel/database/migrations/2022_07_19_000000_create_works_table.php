@@ -24,6 +24,9 @@ class CreateWorksTable extends Migration
             $table->string('cont')
                 ->default('')
                 ->comment("내용글");
+            $table->string('filename')
+                ->default('')
+                ->comment("파일");    
             $table->timestamps();
         });
     }

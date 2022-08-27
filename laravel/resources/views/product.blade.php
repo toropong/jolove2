@@ -17,14 +17,16 @@
         <!-- Page Content-->
         <div class="container px-4 px-lg-5">
             <!-- Heading Row-->
+            <!-- @foreach( $product as $aa) -->
             <div class="row gx-4 gx-lg-5 align-items-center my-5">
                 <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="" alt="..." /></div>
                 <div class="col-lg-5">
-                    <h1 class="font-weight-light">제목들어가는칸</h1>
+                    <h1 class="font-weight-light">{{$aa->title}}</h1>
                     <p>팀원, 팀명</p>
                     <a class="btn btn-primary" href="#!">소스코드 보기</a>
                 </div>
             </div>
+            <!-- @endforeach -->
             <!-- Call to Action-->
             <div class="card text-white bg-secondary my-5 py-4 text-center">
                 <div class="card-body"><p class="text-white m-0">내용들어가는칸</p></div>

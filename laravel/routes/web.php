@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\WorkController;
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,9 +22,10 @@ Route::get('/', function () {
 
 Route::get('/login', 'LoginController@login');
 
-Route::get('/index', function () {
-    return view('index');
-});
+Route::get('/index',[WorkController::class, 'index']); 
+
+Route::get('/product/{no}',[WorkController::class, 'product']); 
+
 Route::get('/register', function () {
     return view('register');
 });
@@ -31,6 +35,8 @@ Route::get('/product', function () {
 Route::get('/findid', function () {
     return view('findid');
 });
+
+Route::post('/image', 'WorkController@store');
 
 //  Route::get('register', [RegisterController::class, 'index']) -> name('register');
 Route::post('/register', 'RegisterController@store');

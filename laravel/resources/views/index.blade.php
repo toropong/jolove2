@@ -20,7 +20,7 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">{{ $year }} 졸업 작품</h1>
+                    <h1 class="display-4 fw-bolder">졸업 작품</h1>
                     <!-- <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p> -->
                 </div>
             </div>
@@ -33,23 +33,23 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="{{ $work->thumbnail() }}" width="200" height="200" alt="..." />
+                            <img class="card-img-top" src="\storage\app\public\{{$work->filename}}" width="200" height="200" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">{{ $work->title; }}</h5>
+                                    <h5 class="fw-bolder">{{$work->title}}</h5>
                                     {{-- Team Name --}}
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-outline-dark mt-auto" href="{{ route('product', ['work' => $work->getID()]) }}">
+                                    <a class="btn btn-outline-dark mt-auto" href="/product/{{$work->no}}">
                                         작품 보기
                                     </a>
                                     @auth
-                                    <a class="btn btn-outline-dark mt-auto" href="{{ route('work.delete', ['work' => $work->getID()]) }}">작품 삭제</a>
+                                    <a class="btn btn-outline-dark mt-auto" href="">작품 삭제</a>
                                     @endauth
                                 </div>
                                 
