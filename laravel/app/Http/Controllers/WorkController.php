@@ -44,11 +44,10 @@ public function index(Request $request){
 );
 }
 
-public function product(Request $request){  
+public function product(Request $request){
 
-    $product=DB::table('works')->select('*')->where('no', $request->no)->get();
-    return view('/product',
-    compact('works')
+    $product=DB::table('works')->select('*')->get();
+    return view('product', compact('product')
 );
 
 
