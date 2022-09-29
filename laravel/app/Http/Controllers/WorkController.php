@@ -19,39 +19,50 @@ class WorkController extends Controller
     // }
 
 
-public function store(Request $request){
+    public function store(Request $request)
+    {
+        // $files = $request->file('picture');
+        $path = $request -> file('picture') -> store('/', 'public');
+        $subpath = $request -> file('images') -> store('/', 'public');
+        // $subpath2 = $request -> file('images[1]') -> store('/', 'public');
+        // $subpath3 = $request -> file('images[2]') -> store('/', 'public');
+        // $subpath4 = $request -> file('images[3]') -> store('/', 'public');
+        // $subpath5 = $request -> file('images[4]') -> store('/', 'public');
+        // console.log('filesArr[1]');
+        // console.log('filesArr[2]');
+        // console.log('filesArr[3]');
+        // console.log('filesArr[4]');
+        // console.log('filesArr[5]');
 
-    $path=$request->file('picture')->store('/','public');
-
-    DB::table('works')->insert([
+        DB::table('works')->insert([
         'title' => $request->input('title'),
         'cont' => $request->input('cont'),
         'year' => $request->input('year'),
-        'filename'=>$path
+        'filename'=>$path,
+        'subimage_1'=>$subpath,
+        // 'subimage_2'=>$subpath2,
+        // 'subimage_3'=>$subpath3,
+        // 'subimage_4'=>$subpath4,
+        // 'subimage_5'=>$subpath5
+        ]);
+        return redirect('/');
     
-    ]);
-    return redirect('/');
-    
+            
     }
 
-public function index(Request $request){   
+    public function index(Request $request)
+    {
     
-    $works=DB::table('works')->select('*')->get();
-    // ->orderby("no","desc")->paginate(10); 
+        $works=DB::table('works')->select('*') -> orderby("no", "desc")->paginate(10);
     
-    return view('/index',
-    compact('works')
-);
-}
+        return view('/index', compact('works')
+        );
+    }
 
-public function product(Request $request){
+    public function product(Request $request){
 
-    $product=DB::table('works')->select('*')->get();
-    return view('product', compact('product')
-);
-
-
-}
-
-
+        $product=DB::table('works')->select('*')->get();
+        return view('product', compact('product')
+        );
+    }
 }

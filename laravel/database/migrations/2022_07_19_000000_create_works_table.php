@@ -26,7 +26,22 @@ class CreateWorksTable extends Migration
                 ->comment("내용글");
             $table->string('filename')
                 ->default('')
-                ->comment("파일");    
+                ->comment("파일");
+            $table->string('subimage_1')
+                ->default('')
+                ->comment("서브이미지");
+            $table->string('subimage_2')
+                ->default('')
+                ->comment("서브이미지2");
+            $table->string('subimage_3')
+                ->default('')
+                ->comment("서브이미지3");
+            $table->string('subimage_4')
+                ->default('')
+                ->comment("서브이미지4");
+            $table->string('subimage_5')
+                ->default('')
+                ->comment("서브이미지5");
             $table->timestamps();
         });
     }

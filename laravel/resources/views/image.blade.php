@@ -44,9 +44,10 @@
           
           {{-- @endforeach --}}
     <input type="file" onchange="checkFile(this);" multiple id="real-input" name="picture" class="image_inputType_file" accept="image*/">
- 
+    
+    {{-- <form method="POST" onsubmit="return false;" enctype="multipart/form-data"> --}}
     <div class="insert">
-      <input type="file" onchange="addFile(this);"   />
+      <input type="file" onchange="addFile(this);" name="images" multiple='multiple'  id="subfile" />
           {{-- <label for="file">
             <div class="btn-upload">추가이미지</div>
           </label> --}}
@@ -56,16 +57,12 @@
 
 
     <div class="c">
-           <input type="text" name="year" />학년도
-              
-              
+           <input type="text" name="year" />학년도          
     </div>
-    <div class="postbutton">
-        {{-- <input type="submit" name="" value="저장" id="save" onclick="save_check()"> --}}
+    {{-- <div class="postbutton">
+        <input type="submit" name="" value="저장" id="save" onclick="save_check()">
         <input type="hidden" value=""  id="close"  >
-      </div>
-
-</div>
+      </div> --}}
 <div class="modal-footer">
 <button type="submit" class="btn btn-primary" name="" value="저장" id="save"onclick="save_check()">저장</button>
 <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" value="창닫기"  id="close"  onclick="window.close()">창닫기</button>
@@ -154,11 +151,15 @@
 
 /* 첨부파일 추가 */
 function addFile(obj){
+
     var maxFileCnt = 5;   // 첨부파일 최대 개수
     var attFileCnt = document.querySelectorAll('.filebox').length;    // 기존 추가된 첨부파일 개수
     var remainFileCnt = maxFileCnt - attFileCnt;    // 추가로 첨부가능한 개수
     var curFileCnt = obj.files.length;  // 현재 선택된 첨부파일 개수
-
+    var file = document.getElementById("subfile");
+    for(var i = 0; i<maxFileCnt; i++){
+      $('input[name="images[i]"].'.file)
+    }
     // 첨부파일 개수 확인
     if (curFileCnt > remainFileCnt) {
         alert("첨부파일은 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
@@ -183,6 +184,7 @@ function addFile(obj){
             htmlData += '   <p class="name">' + file.name + '</p>';
             htmlData += '   <a class="delete" onclick="deleteFile(' + fileNo + ');"><i class="far fa-minus-square"></i></a>';
             htmlData += '</div>';
+            
             $('.file-list').append(htmlData);
             fileNo++;
         } else {
@@ -190,7 +192,7 @@ function addFile(obj){
         }
     }
     // 초기화
-    document.querySelector("input[type=file]").value = "";
+    // document.querySelector("input[type=file]").value = "";
 }
 
 /* 첨부파일 검증 */
@@ -212,7 +214,17 @@ function validation(obj){
         return true;
     }
 }
-
+function submitForm() {
+    // 폼데이터 담기
+    var form = document.querySelector("form");
+    var formData = new FormData(form);
+    for (var i = 0; i < filesArr.length; i++) {
+        // 삭제되지 않은 파일만 폼데이터에 담기
+        if (!filesArr[i].is_delete) {
+            formData.append("attach_file", filesArr[i]);
+        }
+    }
+  }
 /* 첨부파일 삭제 */
 function deleteFile(num) {
     document.querySelector("#file" + num).remove();
