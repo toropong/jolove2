@@ -21,18 +21,17 @@ class WorkController extends Controller
 
     public function store(Request $request)
     {
+        
+        $files = $request -> file('images');
         // $files = $request->file('picture');
         $path = $request -> file('picture') -> store('/', 'public');
-        $subpath = $request -> file('images') -> store('/', 'public');
-        // $subpath2 = $request -> file('images[1]') -> store('/', 'public');
-        // $subpath3 = $request -> file('images[2]') -> store('/', 'public');
-        // $subpath4 = $request -> file('images[3]') -> store('/', 'public');
-        // $subpath5 = $request -> file('images[4]') -> store('/', 'public');
-        // console.log('filesArr[1]');
-        // console.log('filesArr[2]');
-        // console.log('filesArr[3]');
-        // console.log('filesArr[4]');
-        // console.log('filesArr[5]');
+        $subpath =  $files[1] -> store('/', 'public');
+        $subpath2 =  $files[0] -> store('/', 'public');
+        console.log("$file[0],$file[1]");
+        // $subpath3 = $request -> file('images') -> store('/', 'public');
+        // $subpath4 = $request -> file('images') -> store('/', 'public');
+        // $subpath5 = $request -> file('images') -> store('/', 'public');
+
 
         DB::table('works')->insert([
         'title' => $request->input('title'),
@@ -40,7 +39,7 @@ class WorkController extends Controller
         'year' => $request->input('year'),
         'filename'=>$path,
         'subimage_1'=>$subpath,
-        // 'subimage_2'=>$subpath2,
+        'subimage_2'=>$subpath2,
         // 'subimage_3'=>$subpath3,
         // 'subimage_4'=>$subpath4,
         // 'subimage_5'=>$subpath5
