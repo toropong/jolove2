@@ -26,6 +26,16 @@
                     <a class="btn btn-primary" href="#!">소스코드 보기</a>
                 </div>
             </div>
+               <div class="view isk">
+                    <img src="/img/eye.png" width="16" height="16" alt="조회수">
+                    <div class="see_num intf" name="">
+                      @if ($product['visit_count'] !=0)
+                        <span>{{$product['visit_count']}}</span>
+                      @else
+                        <span>0</span>
+                      @endif
+            </div>
+        
             {{-- <!-- @endforeach --> --}}
             <!-- Call to Action-->
             <div class="card text-white bg-secondary my-5 py-4 text-center">

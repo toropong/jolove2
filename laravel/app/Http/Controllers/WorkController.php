@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
-// use App\Models\Works;
+use App\Models\Works;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Config;
 use Carbon\Carbon;
+use Session;
 
 
 class WorkController extends Controller
@@ -25,7 +26,7 @@ class WorkController extends Controller
         $files = $request -> file('images');
         // $files = $request->file('picture');
         $path = $request -> file('picture') -> store('/', 'public');
-        $subpath =  $files[1] -> store('/', 'public');
+        $subpath =  $files[0] -> store('/', 'public');
         $subpath2 =  $files[0] -> store('/', 'public');
         console.log("$file[0],$file[1]");
         // $subpath3 = $request -> file('images') -> store('/', 'public');
@@ -46,22 +47,46 @@ class WorkController extends Controller
         ]);
         return redirect('/');
     
-            
+           
     }
 
     public function index(Request $request)
     {
     
+
         $works=DB::table('works')->select('*') -> orderby("no", "desc")->paginate(10);
+
+
     
         return view('/index', compact('works')
         );
     }
 
     public function product(Request $request){
+        $id = session()->get('userid');
+        //조회수 카운트
+        if( $visit =\App\Models\Works::where('no', $request->no)
+        ->first() ) {
+            
+            $visit->visit_count++;
+            $data["result"] = $visit->update();
+            $data["no"] = $visit->no;
+        } else {
+            $visit = new \App\Models\Works;
+            $visit->no = $request->no;
+            $visit->visit_count++;
+            $data["result"] = $visit->save();
+            $data["no"] = $visit->no;
+        }         
 
-        $product=DB::table('works')->select('*')->get();
-        return view('product', compact('product')
-        );
+        $data["product"] = [];
+        $data["product"]= \App\Models\Works::select()
+        ->where(function ($query) use ($request) {
+            if ($request->no) {
+                    $query->where("no", $request->no);
+            }         
+        })->first();
+        // $count = DB::table('works')->select('visit_count')->where(['no',$request->no])->get();
+        return view('product', $data);
     }
 }
