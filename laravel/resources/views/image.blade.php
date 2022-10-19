@@ -43,14 +43,64 @@
         </div>
           
           {{-- @endforeach --}}
+          <label for="avatar">대표이미지</label>
     <input type="file" onchange="checkFile(this);" multiple id="real-input" name="picture" class="image_inputType_file" accept="image*/">
+        
+    <div class="preview-wrap">
+      <div class="preview-left">
+        <div class="preview">
+          <img src="" onerror="this.src=''" id="image-session2">
+          <div class="preview-image2">
+            <!-- 이미지 미리보기 -->
+          </div>
+        </div>
+      </div>
+      <div class="preview-right">
+        <div class="image-upload">
+          {{-- <label for="real-input">사진 업로드</label> --}}
+        </div>
+      </div>
+  </div>
+  <label for="avatar">추가이미지 1</label>
+    <input type="file"  multiple id="real-input" name="picture2" class="image_inputType_file" accept="image*/" onchange="change(this);" id="file2" >
+
+    <div class="preview-wrap">
+      <div class="preview-left">
+        <div class="preview">
+          <img src="" onerror="this.src=''" id="image-session3">
+          <div class="preview-image">
+            <!-- 이미지 미리보기 -->
+          </div>
+        </div>
+      </div>
+      <div class="preview-right">
+        <div class="image-upload">
+          {{-- <label for="real-input">사진 업로드</label> --}}
+        </div>
+      </div>
+  </div>
+  <label for="avatar">추가이미지 2</label>
+    <input type="file"  multiple id="real-input" name="picture3" class="image_inputType_file" accept="image*/" onchange="change2(this);">
    
-    <input type="file"  multiple id="real-input" name="picture2" class="image_inputType_file" accept="image*/">
-   
-    <input type="file"  multiple id="real-input" name="picture3" class="image_inputType_file" accept="image*/">
-   
-    <input type="file"  multiple id="real-input" name="picture4" class="image_inputType_file" accept="image*/">
-   
+    <div class="preview-wrap">
+      <div class="preview-left">
+        <div class="preview">
+          <img src="" onerror="this.src=''" id="image-session4">
+          <div class="preview-image">
+            <!-- 이미지 미리보기 -->
+          </div>
+        </div>
+      </div>
+      <div class="preview-right">
+        <div class="image-upload">
+          {{-- <label for="real-input">사진 업로드</label> --}}
+        </div>
+      </div>
+  </div>
+  <label for="avatar">추가이미지 3</label>
+    <input type="file"  multiple id="real-input" name="picture4" class="image_inputType_file" accept="image*/" onchange="change3(this);">
+   <div id="div-preview">
+   </div>
     {{-- <form method="POST" onsubmit="return false;" enctype="multipart/form-data"> --}}
 
 
@@ -73,6 +123,10 @@
 <script type="text/javascript">
       // 이미지 등록관련코드
                             function checkFile(el){
+
+          
+
+
                               $('#image-session').attr('src', '#');
                               var file = el.files;
                               if(file[0].size > 1024 * 1024 * 100){
@@ -144,9 +198,42 @@
                                 
                             }
                           }
+                          function change(fl) {
+                              if (fl.files && fl.files[0]) {
+                                var reader = new FileReader();
+                                // 이미지 미리보기해주는 jquery
+                                reader.onload = function (e) {
+                                  $('#image-session2').attr('src', e.target.result);
+                                }
+                          
+                                reader.readAsDataURL(fl.files[0]);
+                              }
+                            }
 
-                          var fileNo = 0;
-                          var filesArr = new Array();
+                            function change2(al) {
+                              if (al.files && al.files[0]) {
+                                var reader = new FileReader();
+                                // 이미지 미리보기해주는 jquery
+                                reader.onload = function (e) {
+                                  $('#image-session3').attr('src', e.target.result);
+                                }
+                          
+                                reader.readAsDataURL(al.files[0]);
+                              }
+                            }
+
+                            function change3(bl) {
+                              if (bl.files && bl.files[0]) {
+                                var reader = new FileReader();
+                                // 이미지 미리보기해주는 jquery
+                                reader.onload = function (e) {
+                                  $('#image-session4').attr('src', e.target.result);
+                                }
+                          
+                                reader.readAsDataURL(bl.files[0]);
+                              }
+                            }
 
 /* 첨부파일 추가 */
+</script>
 
