@@ -32,6 +32,7 @@
     width: 200px;
     height: 200px;
     display: inline-block;
+    border: solid 1px;
   }
   .preview-image{
     display: inline-block;

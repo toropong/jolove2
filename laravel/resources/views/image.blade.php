@@ -90,7 +90,7 @@
 <div class="sub-container2">
   <label for="avatar">추가이미지 3</label>
     <input type="file"  multiple id="real-input" name="picture4" class="image_inputType_file" accept="image*/" onchange="change3(this);">
-    <div class="preview-wrap">
+    <div class="preview-wrap" >
       <div class="preview-left">
         <div class="preview">
           <img src="" onerror="this.src=''" id="image-session4">
