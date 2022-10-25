@@ -27,8 +27,7 @@ class WorkController extends Controller
         $subpath =  $request -> file('picture2') -> store('/', 'public');
         $subpath2 =  $request -> file('picture3') -> store('/', 'public');
         $subpath3 = $request -> file('picture4') -> store('/', 'public');
-        // $subpath4 = $request -> file('images') -> store('/', 'public');
-        // $subpath5 = $request -> file('images') -> store('/', 'public');
+
 
 
         DB::table('works')->insert([
@@ -39,8 +38,7 @@ class WorkController extends Controller
         'subimage_1'=>$subpath,
         'subimage_2'=>$subpath2,
         'subimage_3'=>$subpath3,
-        // 'subimage_4'=>$subpath4,
-        // 'subimage_5'=>$subpath5
+
         ]);
         return redirect('/');
     
@@ -50,15 +48,16 @@ class WorkController extends Controller
     public function index(Request $request)
     {
     
-        $works=DB::table('works')->select('*') -> orderby("no", "desc")->paginate(10);
+        $works=DB::table('works')->select('*') -> orderby("no", "asc")->paginate(10);
     
         return view('/index', compact('works')
         );
     }
 
-    public function product(Request $request){
+    public function product($no){
 
-        $product=DB::table('works')->select('*')->get();
+        $product = DB::table('works')->select('*')->where('no', '=' , $no)->get();
+        
         return view('product', compact('product')
         );
     }

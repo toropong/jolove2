@@ -26,69 +26,7 @@
                         
                         
                             {{-- 작품등록 모달창 --}}
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">작품등록</h5>
-                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="" method="POST"  class="qwe" name="worksform" id="worksform" accept-charset="utf-8" enctype="multipart/form-data" onclick="window.close()" >
-                                            {{csrf_field()}}
-                                            <input type="hidden" name="no" id="no" value="">
-                                            <div class="a">
-                                                <label for="inputLastName1" class="form-label">작품이름</label>
-                                                <div class="input-group"> <span> </span>
-                                                    <input type="text" name="title" value="" id="title" placeholder="작품명">
-                                                </div>
-                                                <div class="title_blank" id="title_blank"></div>
-                                            </div>
-                                            <div class="b">
-                                                <label for="inputLastName1" class="form-label">내용</label>
-                                                <div>
-                                                <textarea name="cont" value="" id="cont"></textarea>
-                                                </div>
-                                                <div class="content_blank" id="content_blank"></div>
-                                            </div>
-                                                <div class="preview-wrap">
-                                                    <div class="preview-left">
-                                                      <div class="preview">
-                                                        <img src="" onerror="this.src=''" id="image-session">
-                                                        <div class="preview-image">
-                                                          <!-- 이미지 미리보기 -->
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    <div class="preview-right">
-                                                      <div class="image-upload">
-                                                        {{-- <label for="real-input">사진 업로드</label> --}}
-                                                      </div>
-                                                    </div>
-                                                </div>
-                                                  
-                                                  {{-- @endforeach --}}
-                                            <input type="file" onchange="checkFile(this);" id="real-input" name="picture" class="image_inputType_file" accept="image*/">
-                                         
-                                            <div class="c">
-                                                   <input type="text" name="year" />학년도
-                                                      
-                                                      
-                                            </div>
-                                            <div class="postbutton">
-                                                {{-- <input type="submit" name="" value="저장" id="save" onclick="save_check()"> --}}
-                                                <input type="hidden" value=""  id="close"  >
-                                              </div>
-                                        
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary" name="" value="저장" id="save"onclick="save_check()">저장</button>
-                                      <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" value="창닫기"  id="close"  onclick="history.back()">창닫기</button>
-                                    </div>
-                                </form>
-                                  </div>
-                                </div>
-                              </div>
+                            
                         </nav>
                         
                         

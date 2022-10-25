@@ -6,12 +6,13 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Shop Homepage - Start Bootstrap Template</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="/css/styles.css" rel="stylesheet" />
+        {{-- <link href="/css/styles.css" rel="stylesheet" /> --}}
     </head>
     <body>
         <!-- Navigation-->
@@ -27,7 +28,8 @@
         </header>
         <!-- Section-->
         <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
+            <div class="container px-4 px-lg-5 mt-5" id= first-display>
+                <button onclick="showdisplay()">리스트변경</button>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 @foreach($works as $work)
                     <div class="col mb-5">
@@ -59,159 +61,6 @@
                         </div>
                     </div>
 @endforeach
-{{-- 예제 카드들을 없앱니다.
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://cdn4.iconfinder.com/data/icons/software-line/32/software-line-02-512.png" height="200"alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Work 1</h5>
-                                    Team Name
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="work1">작품 보기</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <img class="card-img-top" src="https://w7.pngwing.com/pngs/174/1019/png-transparent-web-development-php-computer-icons-txt-file-purple-violet-text.png" height="200"alt="..." />
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder">Work 2</h5>
-                                    Team Name
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="work2">작품 보기</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://cdn.icon-icons.com/icons2/2770/PNG/512/game_icon_176683.png" height="200"alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Work 3</h5>
-                                    Team Name
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="work3">작품 보기</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://cdn.icon-icons.com/icons2/2770/PNG/512/game_icon_176683.png" height="200" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Work 4</h5>
-                                    Team Name
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="work4">작품 보기</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://cdn.icon-icons.com/icons2/159/PNG/256/arduino_22429.png"height="200" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Work 5</h5>
-                                    Team Name
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="work5">작품 보기</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://w7.pngwing.com/pngs/358/405/png-transparent-arduino-computer-icons-computer-software-graphy-logo-miscellaneous-text-trademark.png" height="200"alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Work 6</h5>
-                                    Team Name
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="work6">작품 보기</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://w7.pngwing.com/pngs/904/807/png-transparent-web-development-computer-icons-android-software-development-others-miscellaneous-mobile-app-development-web-development.png"height="200" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Work 7</h5>
-                                    Team Name
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="work7">작품 보기</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://toppng.com/uploads/preview/web-development-icon-png-clipart-website-development-web-dev-icon-11562967383vhxlfmnerz.png"height="200" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Work 8</h5>
-                                    Team Name
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="work8">작품 보기</a></div>
-                            </div>
-                        </div>
-                    </div>
---}}
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>Bootstrap 4</title>
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-            <style>
-                p { margin:20px 0px; }
-            </style>
-        </head>
-        <body>
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -227,21 +76,78 @@
                     </div>
                 </div>
             </div>
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-        </body>
-
+            
                 </div>
             </div>
         </section>
+        <div class="container px-4 px-lg-5 mt-5" >
+            <button onclick="showdisplay2()">리스트변경</button>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+<div class="container_2" style="width: 80%; display:none;" id="second-display" >
+    {{-- <h2>졸업작품</h2> --}}
+    <h3><code>.졸업작품</code></h3> 
+    @foreach($works as $work)           
+    <table class="table">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>작품이름</th>
+          <th>작품설명</th>
+        </tr>
+      </thead>
+     
+      <tbody>
+        <tr>
+          <td>{{$work->no}}</td>
+          <td><a href="product/{{$work->no}}">{{$work->title}}</a></td>
+          <td><a href="product/{{$work->no}}">{{$work->cont}}</a></td>
+        </tr>
+      </tbody>
+    </table>
+    @endforeach
+  </div>           
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
         </footer>
         <!-- Bootstrap core JS-->
+        
+        <script>
+            function showdisplay(){
+                $('#first-display').hide();
+                $('#second-display').show();
+            }
+            function showdisplay2(){
+                $('#second-display').hide();
+                $('#first-display').show();
+            }
+        </script>
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        {{-- <script src="js/scripts.js"></script> --}}
     </body>
 </html>
