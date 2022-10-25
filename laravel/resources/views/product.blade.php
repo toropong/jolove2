@@ -11,12 +11,13 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         {{-- <link href="/css/style.css" rel="stylesheet" /> --}}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Responsive navbar-->
         @include('layouts.navigation')
         <!-- Page Content-->
-       
+        <section class="py-5">
         <div class="container px-4 px-lg-5" style="width: 100%; height:100%;">
             <h2 class="title-image" style="margin-top: 1rem;">대표이미지</h2>
             <div class="row gx-4 gx-lg-5 align-items-center my-5" style="width: 100%">
@@ -86,10 +87,23 @@
             </div>
             
         </div>
-        
+    </section>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+        <footer class="bg-dark py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto">
+                        <div class="small m-0 text-white">Copyright &copy; Your Website 2022</div>
+                    </div>
+                    <div class="col-auto">
+                        <a class="link-light small" href="/manage/register">등록하기</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Terms</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Contact</a>
+                    </div>
+                </div>
+            </div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

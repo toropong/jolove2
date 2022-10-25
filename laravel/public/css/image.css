@@ -41,7 +41,7 @@
   .image-upload{
     display: inline-block;
   }
-  .preview-left{
+  /* .preview-left{
     width: 20%;
     display: inline-block;
   }
@@ -51,7 +51,7 @@
   }
   .preview-right{
     width: 20%;
-  }
+  } */
   .imginfo{
     width: 205px;
     text-align: center;
@@ -122,4 +122,7 @@
 .insert .file-list .filebox .delete i{
     color: #ff5353;
     margin-left: 5px;
+}
+.sub-container{
+  display: flex;
 }

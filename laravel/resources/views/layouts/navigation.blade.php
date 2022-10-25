@@ -36,7 +36,7 @@
                         <script type="text/javascript">
                         function showPopup() {
   var url="image_popup";
-  var option="width=500, height=300, top=200"
+  var option="width=600, height=300, top=200"
   window.open(url, "", option);
 }
                             //이미지 등록관련코드

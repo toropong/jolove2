@@ -26,6 +26,8 @@
         </div>
         <div class="content_blank" id="content_blank"></div>
     </div>
+    <label for="avatar">대표이미지</label>
+    <input type="file" onchange="checkFile(this);" multiple id="real-input" name="picture" class="image_inputType_file" accept="image*/">
         <div class="preview-wrap">
             <div class="preview-left">
               <div class="preview">
@@ -43,9 +45,10 @@
         </div>
           
           {{-- @endforeach --}}
-          <label for="avatar">대표이미지</label>
-    <input type="file" onchange="checkFile(this);" multiple id="real-input" name="picture" class="image_inputType_file" accept="image*/">
-        
+        <div class="sub-container">
+          <div class="sub-container2">
+          <label for="avatar">추가이미지 1</label>
+    <input type="file"  multiple id="real-input" name="picture2" class="image_inputType_file" accept="image*/" onchange="change(this);" id="file2" >
     <div class="preview-wrap">
       <div class="preview-left">
         <div class="preview">
@@ -61,9 +64,12 @@
         </div>
       </div>
   </div>
-  <label for="avatar">추가이미지 1</label>
-    <input type="file"  multiple id="real-input" name="picture2" class="image_inputType_file" accept="image*/" onchange="change(this);" id="file2" >
+</div>
 
+<div class="sub-container2">
+  <label for="avatar">추가이미지 2</label>
+    <input type="file"  multiple id="real-input" name="picture3" class="image_inputType_file" accept="image*/" onchange="change2(this);">
+   
     <div class="preview-wrap">
       <div class="preview-left">
         <div class="preview">
@@ -79,9 +85,11 @@
         </div>
       </div>
   </div>
-  <label for="avatar">추가이미지 2</label>
-    <input type="file"  multiple id="real-input" name="picture3" class="image_inputType_file" accept="image*/" onchange="change2(this);">
-   
+</div>
+
+<div class="sub-container2">
+  <label for="avatar">추가이미지 3</label>
+    <input type="file"  multiple id="real-input" name="picture4" class="image_inputType_file" accept="image*/" onchange="change3(this);">
     <div class="preview-wrap">
       <div class="preview-left">
         <div class="preview">
@@ -97,8 +105,8 @@
         </div>
       </div>
   </div>
-  <label for="avatar">추가이미지 3</label>
-    <input type="file"  multiple id="real-input" name="picture4" class="image_inputType_file" accept="image*/" onchange="change3(this);">
+</div>
+        </div>
    <div id="div-preview">
    </div>
     {{-- <form method="POST" onsubmit="return false;" enctype="multipart/form-data"> --}}
@@ -233,6 +241,7 @@
                                 reader.readAsDataURL(bl.files[0]);
                               }
                             }
+                            
 
 /* 첨부파일 추가 */
 </script>
