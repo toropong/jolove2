@@ -30,18 +30,13 @@ class WorkController extends Controller
 
 
     public function store(Request $request)
-    {
-        
-        $files = $request -> file('images');
-        // $files = $request->file('picture');
+    {   
+        // // $files = $request->file('picture');
         $path = $request -> file('picture') -> store('/', 'public');
-        $subpath =  $files[0] -> store('/', 'public');
-        $subpath2 =  $files[0] -> store('/', 'public');
-        console.log("$file[0],$file[1]");
-        // $subpath3 = $request -> file('images') -> store('/', 'public');
-        // $subpath4 = $request -> file('images') -> store('/', 'public');
-        // $subpath5 = $request -> file('images') -> store('/', 'public');
-
+        $subpath =  $request -> file('picture2') -> store('/', 'public');
+        $subpath2 =  $request -> file('picture3') -> store('/', 'public');
+        $subpath3 = $request -> file('picture4') -> store('/', 'public');
+       
 
         DB::table('works')->insert([
         'title' => $request->input('title'),
@@ -50,24 +45,27 @@ class WorkController extends Controller
         'filename'=>$path,
         'subimage_1'=>$subpath,
         'subimage_2'=>$subpath2,
-        // 'subimage_3'=>$subpath3,
-        // 'subimage_4'=>$subpath4,
-        // 'subimage_5'=>$subpath5
+        'subimage_3'=>$subpath3,
+      
         ]);
         return redirect('/');
     
-           
+            
     }
+
 
     public function index(Request $request)
     {
-    
-        $works=DB::table('works')->select('*') -> orderby("visit_count", "desc")->paginate(10);
-    
-        return view('/index', compact('works')
-        );
+        $data["lists"] = [];
+        $data["lists"]= \App\Models\Works::select()
+        ->where(function ($query) use ($request) {
+            if ($request->year) {
+                    $query->where("year", $request->year);
+            }         
+        })-> orderby("visit_count", "desc")->paginate(10);
+        return view('index', $data);
     }
-    
+
 
     public function product(Request $request){
         $id = session()->get('userid');
@@ -95,5 +93,21 @@ class WorkController extends Controller
         })->get();
 
         return view('product', $data);
+    }
+
+    public function set_favorite(Request $request){
+        $id = session()->get('userid');
+        if( $fv = \App\Models\Works::where('no', $request->no)
+        ->where('userid', $request->id)
+        ->first() ) {
+            $data["result"] = $fv->delete();
+            $data["fv_no"] = 0;
+        } else {
+            $fv = new \App\Models\Works;
+            $fv->no = $request->no;
+            $data["result"] = $fv->save();
+            $data["fv_no"] = $fv->fv_no;
+        }         
+        return response($data);
     }
 }

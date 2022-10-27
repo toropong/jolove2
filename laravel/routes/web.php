@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('/login', 'LoginController@login');
 
-Route::get('/index',[WorkController::class, 'index']); 
+Route::get('/index/{year}',[WorkController::class, 'index']); 
 
 Route::get('/product/{no}',[WorkController::class, 'product']); 
 
