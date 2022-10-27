@@ -26,6 +26,8 @@ Route::get('/index',[WorkController::class, 'index']);
 
 Route::get('/product/{no}','WorkController@product'); 
 
+Route::post('/product/like','WorkController@like');
+
 Route::get('/register', function () {
     return view('register');
 });

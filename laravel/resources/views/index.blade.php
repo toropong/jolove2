@@ -108,7 +108,7 @@
     @endforeach
   </div>           
 
-        <div class="container">
+        {{-- <div class="container">
             <div class="row">
                 <div class="col">
                     <ul class="pagination justify-content-center">
@@ -122,7 +122,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> --}}
         
             </div>
         </div>
