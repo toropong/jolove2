@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>상세페이지</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -32,8 +33,17 @@
                 </div>
             </div>
             @endforeach
+            @auth
+            <th>좋아요</th>
+<td> <input id="likebtn" type="button" value="♥" /></td>
+            @else
+            <th>좋아요</th>
+            <td> <input type="button" value="♥" style="pointer-events: none"/> </td> 
+            @endif 
             @endif
             
+
+    
                <div class="view isk">
                     <img src="/img/eye.png" width="16" height="16" alt="조회수">
                     <div class="see_num intf" name="">
@@ -107,6 +117,42 @@
                 </div>
             </div>
         </footer>
+        
+                
+    <script>
+  
+        $(document).ready(function(){
+            $("#likebtn").click(likedata);
+            console.log("이거까진됨");
+        });
+        function likedata(){
+            $.ajax({
+                url:'/product/like/{no}',
+                type: 'post',
+                dataType: 'json',
+                data: {"likevalue": $("#likebtn").val()},
+                
+                success: function(data, statusText, jqXHR){
+                    console.log("성공")
+                    console.log(data); //응답 body부 데이터
+                    	console.log(statusText); //"succes"로 고정인듯함
+                    	console.log(jqXHR);
+                        
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    console.log(jqXHR);  //응답 메시지
+                    	console.log(textStatus); //"error"로 고정인듯함
+                    	console.log(errorThrown);
+                    console.log("실패");
+                }
+            })
+        }
+        $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+    </script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

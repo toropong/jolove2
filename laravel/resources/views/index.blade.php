@@ -48,7 +48,7 @@
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-outline-dark mt-auto" href="product/{{$list['no']}}">
+                                    <a class="btn btn-outline-dark mt-auto" href="/public/product/{{$list['no']}}">
                                         작품 보기
                                     </a>
                                     @auth

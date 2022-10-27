@@ -36,17 +36,17 @@ class CreateWorksTable extends Migration
             $table->string('subimage_3')
                 ->default('')
                 ->comment("서브이미지3");
-            $table->string('subimage_4')
-                ->default('')
-                ->comment("서브이미지4");
-            $table->string('subimage_5')
-                ->default('')
-                ->comment("서브이미지5");
+            
             $table->unsignedInteger('p_like')->default(0)
                 ->comment("추천수");
             $table->unsignedInteger('visit_count')->default(0) 
                  ->comment("조회수");
             $table->timestamps();
+            
+            //외래키
+            $table->unsignedBigInteger('u_no');
+            $table->foreign('u_no')->references('id')->on('users');
+            
         });
     }
 
