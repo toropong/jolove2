@@ -31,23 +31,24 @@
             <div class="container px-4 px-lg-5 mt-5" id= first-display>
                 <button onclick="showdisplay()">리스트변경</button>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-@foreach($works as $work)
+                @if(isset($lists))
+                @foreach($lists as $list)
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="\storage\app\public\{{$work->filename}}" width="200" height="200" alt="..." />
+                            <img class="card-img-top" src="\storage\app\public\{{$list['filename']}}" width="200" height="200" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">{{$work->title}}</h5>
+                                    <h5 class="fw-bolder">{{$list['title']}}</h5>
                                     {{-- Team Name --}}
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-outline-dark mt-auto" href="product/{{$work->no}}">
+                                    <a class="btn btn-outline-dark mt-auto" href="/public/product/{{$list['no']}}">
                                         작품 보기
                                     </a>
                                     @auth
@@ -61,6 +62,7 @@
                         </div>
                     </div>
 @endforeach
+@endif
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -87,7 +89,8 @@
 <div class="container_2" style="width: 80%; display:none;" id="second-display" >
     {{-- <h2>졸업작품</h2> --}}
     <h3><code>.졸업작품</code></h3> 
-    @foreach($works as $work)           
+    @if(isset($lists))
+    @foreach($lists as $list)           
     <table class="table">
       <thead>
         <tr>
@@ -99,32 +102,16 @@
      
       <tbody>
         <tr>
-          <td>{{$work->no}}</td>
-          <td><a href="product/{{$work->no}}">{{$work->title}}</a></td>
-          <td><a href="product/{{$work->no}}">{{$work->cont}}</a></td>
+          <td>{{$list['no']}}</td>
+          <td><a href="product/{{$list['no']}}">{{$list['title']}}</a></td>
+          <td><a href="product/{{$list['no']}}">{{$list['cont']}}</a></td>
         </tr>
       </tbody>
     </table>
     @endforeach
-  </div>           
-
-        {{-- <div class="container">
-            <div class="row">
-                <div class="col">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div> --}}
-        
-            </div>
+    @endif
+  </div>       
+    </div>
         </div>
         <!-- Footer-->
         <footer class="py-5 bg-dark">

@@ -22,11 +22,11 @@ Route::get('/', function () {
 
 Route::get('/login', 'LoginController@login');
 
-Route::get('/index',[WorkController::class, 'index']); 
+Route::get('/index/{year}',[WorkController::class, 'index']); 
 
-Route::get('/product/{no}','WorkController@product'); 
+Route::get('/product/{no}',[WorkController::class, 'product']); 
 
-Route::post('/product/like','WorkController@like');
+Route::post('/product/like/{no}','WorkController@like');
 
 Route::get('/register', function () {
     return view('register');
