@@ -93,40 +93,26 @@ class WorkController extends Controller
                     $query->where("no", $request->no);
             }
         })->get();
-
+        // DB::table('likes')->join('works','likes.w_no','works.no')
         return view('product', $data);
     }
-    public function like(Request $no){
-        $w_no = DB::table('works')->select('u_no')->where('no','=',$no)->get();
-        $w_on = $w_no[0];
+    
+    public function like(Request $request){
+        $w_no = $request->input('w_no');
         $u_no = Auth::user()->id;
+        if(DB::table('likes')->where('w_no','=',$w_no)->where('u_no','=',$u_no)->doesntExist()){
         DB::table('likes')->insert([
             'u_no'=>$u_no,
-            'w_no'=>$w_on,
+            'w_no'=>$w_no,
         ]);
-        $favorite = DB::table('likes')
-        ->join('users', 'likes.u_no','users.id')
-        ->join('likes','works.no','likes.w_no')
-        ->select('*')->get();
-        // $likevalue = $request->input('likevalue');
-        // $u_jg = DB::table('users')->select('u_like')->where('id','=',$u_no)->get();
-        
-        // if(count($u_u)<1){
-        //  DB::table('users')->where('id','=',$u_no)->update([
-        //     'u_like' => '1'
-        // ]);
-        // }
-        // else {
-        //     DB::table('users')->where('id','=',$u_no)->update([
-        //         'u_like' => '0'
-        //     ]);
-        // }
-        // $count=DB::table('users')
-        // // ->join('likes','users.id','=','likes.u_no')
-        // ->select('u_like')->count();
-        // dd($favorite);
-        return response()->json($w_no);
-        }
-    // }
+        $favorite = DB::table('likes')->select('l_no')->where('w_no','=',$w_no)->count();
+        return response()->json($favorite);
+    }
+    else if(DB::table('likes')->where('w_no','=',$w_no)->where('u_no','=',$u_no)->exists()){
+        DB::table('likes')->where('w_no','=',$w_no)->where('u_no','=',$u_no)->delete();
+        $favorite = DB::table('likes')->select('l_no')->where('w_no','=',$w_no)->count();
+        return response()->json($favorite);
+    } 
+     }
 }
     

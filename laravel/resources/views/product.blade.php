@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         <title>상세페이지</title>
+        
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -29,13 +30,15 @@
                 <div class="col-lg-5">
                     <h1 class="font-weight-light"></h1>
                     <p>{{$products['title']}}</p>
-                    <a class="btn btn-primary" href="#!">소스코드 보기</a>
+                    <a class="btn btn-primary" href="#!">♥소스코드 보기</a>
                 </div>
             </div>
             @endforeach
             @auth
+            {{-- @foreach($favorite as $favorites) --}}
             <th>좋아요</th>
-<td> <input id="likebtn" type="button" value="♥" /></td>
+<td> <input id="likebtn" type="button" value="♡" style="border: none"/>좋아요갯수</td>
+{{-- @endforeach --}}
             @else
             <th>좋아요</th>
             <td> <input type="button" value="♥" style="pointer-events: none"/> </td> 
@@ -119,24 +122,32 @@
         </footer>
         
                 
-    <script>
-  
+    <script type="text/javascript">
         $(document).ready(function(){
             $("#likebtn").click(likedata);
-            console.log("이거까진됨");
         });
-        function likedata(){
-            $.ajax({
-                url:'/product/like/{no}',
-                type: 'post',
-                dataType: 'json',
-                data: {"likevalue": $("#likebtn").val()},
-                
-                success: function(data, statusText, jqXHR){
+
+        var w_no = {{$products->no}};
+
+function likedata(){
+  $.ajax({
+    type : 'POST',
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    url : 'test',
+    async : true,
+   
+         dataType : 'json',
+         data : {"likevalue" : $("#likebtn").val(),
+        "w_no" : w_no},
+         success: function(data, statusText, jqXHR){
                     console.log("성공")
                     console.log(data); //응답 body부 데이터
                     	console.log(statusText); //"succes"로 고정인듯함
                     	console.log(jqXHR);
+                        if(data=="1"){
+                            $("#likebtn").attr("value","♥");
+                        }
                         
                 },
                 error: function(jqXHR, textStatus, errorThrown){
@@ -144,16 +155,15 @@
                     	console.log(textStatus); //"error"로 고정인듯함
                     	console.log(errorThrown);
                     console.log("실패");
-                }
-            })
-        }
-        $.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
   }
-});
+})
+}
+ 
+
     </script>
         <!-- Bootstrap core JS-->
+        
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script> 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         {{-- <script src="/js/scripts.js"></script> --}}

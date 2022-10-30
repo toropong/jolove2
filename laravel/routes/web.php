@@ -26,14 +26,14 @@ Route::get('/index/{year}',[WorkController::class, 'index']);
 
 Route::get('/product/{no}',[WorkController::class, 'product']); 
 
-Route::post('/product/like/{no}','WorkController@like');
+// Route::post('/product/like',[WorkController::class, 'like']);
+
+Route::post('/product/test','WorkController@like');
 
 Route::get('/register', function () {
     return view('register');
 });
-// Route::get('/product', function () {
-//     return view('product');
-// });
+
 Route::get('/findid', function () {
     return view('findid');
 });
