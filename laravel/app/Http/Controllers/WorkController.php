@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Works;
+use App\Models\Likes;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -28,6 +29,7 @@ class WorkController extends Controller
     public function __construct()
     {
         $this->works = new Works();
+        $this->likes = new Likes();
     }
 
 
@@ -93,24 +95,32 @@ class WorkController extends Controller
                     $query->where("no", $request->no);
             }
         })->get();
-        // DB::table('likes')->join('works','likes.w_no','works.no')
+        
+        $data["likes"]= \App\Models\Works::select("likes.w_no")
+        ->leftjoin('likes', 'no', '=', 'likes.w_no')
+        ->where(function ($query) use ($request) {
+            if ($request->no) {
+                    $query->where("no", $request->no);
+            }
+        })->count();
+
         return view('product', $data);
     }
     
     public function like(Request $request){
         $w_no = $request->input('w_no');
         $u_no = Auth::user()->id;
-        if(DB::table('likes')->where('w_no','=',$w_no)->where('u_no','=',$u_no)->doesntExist()){
+        if(\App\Models\Likes::where('w_no','=',$w_no)->where('u_no','=',$u_no)->doesntExist()){
         DB::table('likes')->insert([
             'u_no'=>$u_no,
             'w_no'=>$w_no,
         ]);
-        $favorite = DB::table('likes')->select('l_no')->where('w_no','=',$w_no)->count();
+        $favorite = \App\Models\Likes::select('l_no')->where('w_no','=',$w_no)->count();
         return response()->json($favorite);
     }
-    else if(DB::table('likes')->where('w_no','=',$w_no)->where('u_no','=',$u_no)->exists()){
-        DB::table('likes')->where('w_no','=',$w_no)->where('u_no','=',$u_no)->delete();
-        $favorite = DB::table('likes')->select('l_no')->where('w_no','=',$w_no)->count();
+    else if(\App\Models\Likes::where('w_no','=',$w_no)->where('u_no','=',$u_no)->exists()){
+        \App\Models\Likes::where('w_no','=',$w_no)->where('u_no','=',$u_no)->delete();
+        $favorite = \App\Models\Likes::select('l_no')->where('w_no','=',$w_no)->count();
         return response()->json($favorite);
     } 
      }

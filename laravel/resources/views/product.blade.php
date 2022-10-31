@@ -38,6 +38,7 @@
             {{-- @foreach($favorite as $favorites) --}}
             <th>좋아요</th>
 <td> <input id="likebtn" type="button" value="♡" style="border: none"/>좋아요갯수</td>
+            {{$likes}}개
 {{-- @endforeach --}}
             @else
             <th>좋아요</th>
