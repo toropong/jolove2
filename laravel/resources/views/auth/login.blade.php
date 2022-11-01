@@ -53,7 +53,7 @@
                                     </label>
                                 </div>
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="/findid">
+                                    <a class="btn btn-link" href="findid">
                                         아이디 /
                                     </a>
                                     <a class="btn btn-link" href="">

@@ -38,6 +38,7 @@ Route::get('/findid', function () {
     return view('findid');
 });
 
+Route::post('/find','WorkController@find_id');
 Route::post('/image', 'WorkController@store');
 
 //  Route::get('register', [RegisterController::class, 'index']) -> name('register');

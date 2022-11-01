@@ -127,12 +127,12 @@ class WorkController extends Controller
      public function find_id(Request $request)
      {   
          $i_name = $request->input('name');
-         $i_phone_num = $request->input('phone_num');
-         $name = DB::table('users')->select('name')->where('name','=',$name)->first();
-
-
-         if(DB::table('users')->where($i_name,'=','name')->where($i_phone_num,'=','c_num')->exists()){
-            echo "<script>alert('회원님의 ID는 ",$name['userid']."입니다,');history.back();
+         $phone_num = $request->input('phone_num');
+         $name = DB::table('users')->select('userid')->where('name','=',$i_name)->get();
+         $name2 = $name[0]->userid;
+        
+         if(DB::table('users')->where('name','=',$i_name)->where('c_num','=',$phone_num)->exists()){
+            echo "<script>alert('회원님의 ID는 $name2 입니다');history.back();
             </script>";  
      }
      else{

@@ -13,14 +13,14 @@
 <body>
     <div class="login-container">
         <div class="login-box">
-        <form action="" method="post" class="login-form">
+        <form action="find" method="post" class="login-form">
             {{csrf_field()}}
             <h3 class="logo">아이디 찾기</h3>
             <div class="textForm">이름
                 <input type="text" class="id" name="name" id="find_id" placeholder="이 름">
             </div>
             <div class="textForm">휴대전화
-                <input type="text" id="find_phonenum" name=phone_num"" class="pw" placeholder="휴대전화번호">
+                <input type="text" id="find_phonenum" name="phone_num" class="pw" placeholder="휴대전화번호">
             </div>
             <div id="numblank"></div>
             <br>
