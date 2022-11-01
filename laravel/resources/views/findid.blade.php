@@ -4,25 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>id찾기</title>
     <link href="css/login.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    
 </head>
 <body>
     <div class="login-container">
         <div class="login-box">
-    <form class="login-form" action="" name="findid" method="POST">
-            <h3 class="logo">휴대전화 인증</h3>
+        <form action="" method="post" class="login-form">
+            {{csrf_field()}}
+            <h3 class="logo">아이디 찾기</h3>
             <div class="textForm">이름
-                <input type="text" class="id" id="find_id">
+                <input type="text" class="id" name="name" id="find_id" placeholder="이 름">
             </div>
             <div class="textForm">휴대전화
-                <input type="text" id="find_phonenum" class="pw" placeholder="휴대전화번호">
+                <input type="text" id="find_phonenum" name=phone_num"" class="pw" placeholder="휴대전화번호">
             </div>
             <div id="numblank"></div>
             <br>
                <div class="btnSearch">
-                <input class="find_bt" type="button" name="enter" value="찾기" onClick="search_id()">   
+                <input class="find_bt" type="submit" name="enter" value="찾기" onClick="search_id()">   
                 <input class="find_bt2" type="button" name="enter" value="취소" onClick="history.back()">    
             </div> 
         </form>

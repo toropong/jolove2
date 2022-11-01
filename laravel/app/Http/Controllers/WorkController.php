@@ -124,5 +124,20 @@ class WorkController extends Controller
         return response()->json($favorite);
     } 
      }
+     public function find_id(Request $request)
+     {   
+         $i_name = $request->input('name');
+         $i_phone_num = $request->input('phone_num');
+         $name = DB::table('users')->select('name')->where('name','=',$name)->first();
+
+
+         if(DB::table('users')->where($i_name,'=','name')->where($i_phone_num,'=','c_num')->exists()){
+            echo "<script>alert('회원님의 ID는 ",$name['userid']."입니다,');history.back();
+            </script>";  
+     }
+     else{
+        echo "<script>alert('없는 계정입니다.'); history.back();</script>";
+     }
+     }
 }
     

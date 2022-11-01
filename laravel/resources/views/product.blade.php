@@ -149,6 +149,9 @@ function likedata(){
                         if(data=="1"){
                             $("#likebtn").attr("value","♥");
                         }
+                        else{
+                            $("#likebtn").attr("value","♡");
+                        }
                         
                 },
                 error: function(jqXHR, textStatus, errorThrown){

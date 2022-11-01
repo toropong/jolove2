@@ -53,8 +53,11 @@
                                     </label>
                                 </div>
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                    <a class="btn btn-link" href="/findid">
+                                        아이디 /
+                                    </a>
+                                    <a class="btn btn-link" href="">
+                                        비밀번호 찾기
                                     </a>
                                 @endif
                     </form>
