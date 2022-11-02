@@ -56,7 +56,7 @@
                                     <a class="btn btn-link" href="findid">
                                         아이디 /
                                     </a>
-                                    <a class="btn btn-link" href="">
+                                    <a class="btn btn-link" href=findpw>
                                         비밀번호 찾기
                                     </a>
                                 @endif

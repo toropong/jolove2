@@ -139,5 +139,14 @@ class WorkController extends Controller
         echo "<script>alert('없는 계정입니다.'); history.back();</script>";
      }
      }
+     public function find_pw(Request $request){
+        $u_id = $request->input('id');
+        
+        if(DB::table('users')->where('userid','=',$u_id)->exists()){
+            return redirect('password/reset');   
+        }
+        
+    }
+
 }
     
