@@ -27,6 +27,12 @@ Route::get('/index/{year}',[WorkController::class, 'index']);
 Route::get('/product/{no}',[WorkController::class, 'product']); 
 
 Route::post('/product/like/{no}','WorkController@like');
+//댓글 등록,수정
+Route::post('/comment/update',[WorkController::class, 'comment_update']);
+
+// Route::post('/product/like',[WorkController::class, 'like']);
+
+Route::post('/product/test','WorkController@like');
 
 Route::get('/register', function () {
     return view('register');
@@ -37,6 +43,8 @@ Route::get('/register', function () {
 Route::get('/findid', function () {
     return view('findid');
 });
+
+Route::post('/find',[WorkController::class, 'find_id']);
 
 Route::post('/image', 'WorkController@store');
 

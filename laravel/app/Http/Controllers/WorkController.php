@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 // use App\Models\Works;
+use App\Models\Works;
+use App\Models\Likes;
+use App\Models\Comments;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -19,6 +22,21 @@ class WorkController extends Controller
     // {
     //     $this->works = new Works();
     // }
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public $user;
+
+    public function __construct()
+    {
+        $this->works = new Works();
+        $this->likes = new Likes();
+        $this->comments = new Comments();
+    }
 
 
     public function store(Request $request)
@@ -84,11 +102,48 @@ class WorkController extends Controller
             }
         })->get();
 
+        #댓글
+        $data["comment"]=[];
+        $data["comment"]= \App\Models\Comments::select()
+        ->leftjoin('works', 'works.no', '=', 'comments.w_no')
+        ->where(function ($query) use ($request) {
+          if($request->no) {
+                 $query->where("no", $request->no);
+             }
+         })->get();
         return view('product', $data);
     }
-    public function like(Request $no){
-        $w_no = DB::table('works')->select('u_no')->where('no','=',$no)->get();
-        $w_on = $w_no[0];
+
+    public function comment_update(Request $request){
+   
+        $result = [];
+        if( $request->no ) {
+            $comments = \App\Models\Comments::where('no', $request->no)->firstOrFail();
+        } else {
+            $comments = new Comments();
+        }
+
+        $comments->c_comments = $request->c_comments;
+        $comments->u_no = session()->get('id');
+        $comments->w_no = $request->no;
+
+        if( $comments->c_no ) {
+            $result['result'] = $comments->update();
+        } else {
+            $result['result'] = $comments->save();
+        }
+
+        if( $request->rURL ) {
+            $result['rURL'] = $request->rURL;
+        } else {
+            $result['rURL'] = "";
+        }
+
+        return($result);
+    }
+    
+    public function like(Request $request){
+        $w_no = $request->input('w_no');
         $u_no = Auth::user()->id;
         DB::table('likes')->insert([
             'u_no'=>$u_no,
@@ -118,5 +173,28 @@ class WorkController extends Controller
         return response()->json($w_no);
         }
     // }
+        $favorite = \App\Models\Likes::select('l_no')->where('w_no','=',$w_no)->count();
+        return response()->json($favorite);
+    }
+    else if(\App\Models\Likes::where('w_no','=',$w_no)->where('u_no','=',$u_no)->exists()){
+        \App\Models\Likes::where('w_no','=',$w_no)->where('u_no','=',$u_no)->delete();
+        $favorite = \App\Models\Likes::select('l_no')->where('w_no','=',$w_no)->count();
+        return response()->json($favorite);
+    } 
+     }
+
+     public function find_id(Request $request)
+     {
+         $i_name = $request->input('name');
+         $phone_num = $request->input('phone_num');
+
+         if(DB::table('users')->where('name','=',$i_name)->where('c_num','=',$phone_num)->exists()){
+            echo "<script>alert('회원님의 ID는  입니다,');history.back();
+            </script>";
+     }
+     else{
+        echo "<script>alert('없는 계정입니다.'); history.back();</script>";
+     }
+     }
 }
     
