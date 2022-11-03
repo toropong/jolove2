@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Works;
 use App\Models\Likes;
+use App\Models\Comments;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -30,6 +31,7 @@ class WorkController extends Controller
     {
         $this->works = new Works();
         $this->likes = new Likes();
+        $this->comments = new Comments();
     }
 
 
