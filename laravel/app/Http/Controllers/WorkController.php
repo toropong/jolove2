@@ -106,7 +106,44 @@ class WorkController extends Controller
             }
         })->count();
 
-        return view('product', $data);
+         #댓글
+         $data["comment"]=[];
+         $data["comment"]= \App\Models\Comments::select()
+         ->leftjoin('works', 'works.no', '=', 'comments.w_no')
+         ->where(function ($query) use ($request) {
+           if($request->no) {
+                  $query->where("no", $request->no);
+              }
+          })->get();
+         return view('product', $data);
+     }
+ 
+     public function comment_update(Request $request){
+    
+         $result = [];
+         if( $request->no ) {
+             $comments = \App\Models\Comments::where('no', $request->no)->firstOrFail();
+         } else {
+             $comments = new Comments();
+         }
+ 
+         $comments->c_comments = $request->c_comments;
+         $comments->u_no = session()->get('id');
+         $comments->w_no = $request->no;
+ 
+         if( $comments->c_no ) {
+             $result['result'] = $comments->update();
+         } else {
+             $result['result'] = $comments->save();
+         }
+ 
+         if( $request->rURL ) {
+             $result['rURL'] = $request->rURL;
+         } else {
+             $result['rURL'] = "";
+         }
+ 
+         return($result);
     }
     
     public function like(Request $request){
