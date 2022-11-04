@@ -30,6 +30,8 @@ Route::get('/product/{no}',[WorkController::class, 'product']);
 
 Route::post('/product/test','WorkController@like');
 
+Route::post('/product/update','WorkController@comment_update' );
+
 Route::get('/register', function () {
     return view('register');
 });

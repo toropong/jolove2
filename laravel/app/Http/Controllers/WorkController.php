@@ -119,31 +119,37 @@ class WorkController extends Controller
      }
  
      public function comment_update(Request $request){
-    
-         $result = [];
-         if( $request->no ) {
-             $comments = \App\Models\Comments::where('no', $request->no)->firstOrFail();
-         } else {
-             $comments = new Comments();
-         }
+
+        $id = session()->get('userid');
+         
+        $c_comments = $request->input('no');  
+        $w_no = $request->input('c_comments');  
+
+        
+        DB::table('comments')->insert([
+            'c_comments' =>  $c_comments,
+            'w_no' =>  $w_no, 
+            'u_no' =>$id,
+            ]); 
+
+        return response(1);
+
+
+        //  $result = [];
+        //  if( $request->no ) {
+        //      $comments = \App\Models\Comments::where('no', $request->no)->get();
+        //  } else {
+        //      $comments = new Comments();
+        //  }
  
-         $comments->c_comments = $request->c_comments;
-         $comments->u_no = session()->get('id');
-         $comments->w_no = $request->no;
+        //  $comments->c_comments = $request->c_comments ?? ""; 
+        //  $comments->u_no = session()->get('id')  ?? 0; 
+        //  $comments->w_no = $request->no  ?? 0;
  
-         if( $comments->c_no ) {
-             $result['result'] = $comments->update();
-         } else {
-             $result['result'] = $comments->save();
-         }
- 
-         if( $request->rURL ) {
-             $result['rURL'] = $request->rURL;
-         } else {
-             $result['rURL'] = "";
-         }
- 
-         return($result);
+
+        // $result['result'] = $comments->save();
+                                                            
+        //  return response($result);
     }
     
     public function like(Request $request){
