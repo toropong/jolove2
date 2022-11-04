@@ -215,24 +215,8 @@
         });
 }
 
-
-function likedata(){
-  $.ajax({
-    type : 'POST',
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-    url : 'test',
-    async : true,
+   </script>
    
-         dataType : 'json',
-         data : {"likevalue" : $("#likebtn").val(),
-        "w_no" : w_no},
-         success: function(data, statusText, jqXHR){
-                    console.log("성공")
-                    console.log(data); //응답 body부 데이터
-                    	console.log(statusText); //"succes"로 고정인듯함
-                    	console.log(jqXHR);
-                        
                 },
                 error: function(jqXHR, textStatus, errorThrown){
                     console.log(jqXHR);  //응답 메시지
