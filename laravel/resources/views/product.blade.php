@@ -113,7 +113,7 @@
               <div class="combox">
                 <div class="comcontent">
                   <div class="comment_munie">
-                    <input type="textarea" class="comment_text" name="c_comments" id="c_comments" rows="8" cols="80" placeholder="댓글 내용 입력" required></textarea>
+                    <input type="textarea" class="comment_text" name="c_comments" id="c_comments" rows="8" cols="80" placeholder="댓글 내용 입력" required>
                   </div>
                     <div class="col-xs-12 mt-3 text-center">
                         <button type="button" class="btn btn-sm btn-primary" id="btn_custom_update">글작성</button>
@@ -179,8 +179,7 @@
         });
 
         var w_no = {{$products->no}};
-
-
+        var c_comments = $("#c_comments").serialize();
 function likedata(){
   $.ajax({
     type : 'POST',
@@ -222,7 +221,8 @@ function likedata(){
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
     url : 'update', 
     async : true,
-   
+   data: {'c_comments' : c_comments,
+            'w_no' : w_no},
          dataType : 'json',
          success: function(data, statusText, jqXHR){
                     console.log("성공")

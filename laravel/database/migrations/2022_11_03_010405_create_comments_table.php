@@ -16,7 +16,7 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id('c_no')->comment('댓글');
 
-            $table->text('c_comments')->default('')->comment('댓글내용');
+            $table->string('c_comments')->default('')->comment('댓글내용');
             
             $table->unsignedBigInteger('u_no');
             $table->foreign('u_no')->references('id')->on('users');
@@ -35,6 +35,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comment');
+        Schema::dropIfExists('comments');
     }
 }

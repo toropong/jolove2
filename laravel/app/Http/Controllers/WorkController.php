@@ -120,16 +120,15 @@ class WorkController extends Controller
  
      public function comment_update(Request $request){
 
-        $id = session()->get('userid');
-         
-        $c_comments = $request->input('no');  
-        $w_no = $request->input('c_comments');  
+        $u_no = Auth::user()->id;
+        $c_comments = $request->c_comments;  
+        $w_no = $request->w_no; 
 
         
         DB::table('comments')->insert([
-            'c_comments' =>  $c_comments,
-            'w_no' =>  $w_no, 
-            'u_no' =>$id,
+            'c_comments' =>$c_comments,
+            'w_no' => $w_no ,
+            'u_no' =>$u_no,
             ]); 
 
         return response(1);
