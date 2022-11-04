@@ -113,7 +113,7 @@
               <div class="combox">
                 <div class="comcontent">
                   <div class="comment_munie">
-                    <input type="textarea" class="comment_text" name="c_comments" id="c_comments" rows="8" cols="80" placeholder="댓글 내용 입력" required>
+                    <textarea class="comment_text" name="c_comments" id="c_comments" rows="8" cols="80" placeholder="댓글 내용 입력" required></textarea>
                   </div>
                     <div class="col-xs-12 mt-3 text-center">
                         <button type="button" class="btn btn-sm btn-primary" id="btn_custom_update">글작성</button>
