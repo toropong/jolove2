@@ -109,6 +109,7 @@
                 {{csrf_field()}}
                 @foreach($comment as $comments)
               <input type="hidden" name="no" id="no" value="{{ $comments['w_no'] }}"> 
+              <input type="hidden" name="c_no" id="c_no" value="{{ $comments['c_no'] }}"> 
                  @endforeach
               <div class="combox">
                 <div class="comcontent">
@@ -128,7 +129,7 @@
 
                   <h3>전체 댓글</h3>
                 </div>
-                @foreach ($comment as $key => $comments)
+                     @foreach ($comment as $key => $comments)
                   <div class="create_comment">
                     <div class="neadcomt">
                       <div class="comment_naeyoung">
@@ -140,6 +141,11 @@
                           <p> {{$comments['c_comments']}}</p>
                         </div>
                     </div>
+
+                    <div class="delete">
+                    <button type="button" class="btn btn-sm btn-primary" id="btn_comment_delete">글삭제</button>
+                    </div>
+
                   </div>
                 @endforeach
               </div>
@@ -174,43 +180,52 @@
                 custom_update();
             });
 
+        $(document).on("click", "#btn_comment_delete", function () {
+            comment_delete();
+        });
+
         $(document).ready(function(){
             $("#likebtn").click(likedata);
         });
 
+        
+
         var w_no = {{$products->no}};
         var c_comments = $("#c_comments").serialize();
-function likedata(){
-  $.ajax({
-    type : 'POST',
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-    url : 'test',
-    async : true,
-   
-         dataType : 'json',
-         data : {"likevalue" : $("#likebtn").val(), 
-        "w_no" : w_no},
-         success: function(data, statusText, jqXHR){
-                    console.log("성공")
-                    console.log(data); //응답 body부 데이터
-                       console.log(statusText); //"succes"로 고정인듯함
-                       console.log(jqXHR);
-                        if(data=="1"){
-                            $("#likebtn").attr("value","♥");
-                        }
-                        else{
-                            $("#likebtn").attr("value","♡");
-                        }
-                        
-                },
-                error: function(jqXHR, textStatus, errorThrown){
-                    console.log(jqXHR);  //응답 메시지
-                       console.log(textStatus); //"error"로 고정인듯함
-                       console.log(errorThrown);
-                    console.log("실패");
-                 }
-            })
+        var c_no = $("#c_no").serialize();
+
+
+    function likedata(){
+    $.ajax({
+        type : 'POST',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        url : 'test',
+        async : true,
+    
+            dataType : 'json',
+            data : {"likevalue" : $("#likebtn").val(), 
+            "w_no" : w_no},
+            success: function(data, statusText, jqXHR){
+                        console.log("성공")
+                        console.log(data); //응답 body부 데이터
+                        console.log(statusText); //"succes"로 고정인듯함
+                        console.log(jqXHR);
+                            if(data=="1"){
+                                $("#likebtn").attr("value","♥");
+                            }
+                            else{
+                                $("#likebtn").attr("value","♡");
+                            }
+                            
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        console.log(jqXHR);  //응답 메시지
+                        console.log(textStatus); //"error"로 고정인듯함
+                        console.log(errorThrown);
+                        console.log("실패");
+                    }
+                })
 }
 
     function custom_update() {
@@ -240,6 +255,42 @@ function likedata(){
             })
     }
 
+
+    function comment_delete() {
+    $.ajax({
+    type : 'POST',
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    url : 'delete', 
+    async : true,
+    data: {
+        'c_no' :c_no,
+        'c_comments' : c_comments,
+        'w_no' : w_no},
+    dataType : 'json',
+    success: function(data, statusText, jqXHR){
+                console.log("성공")
+                console.log(data); //응답 body부 데이터
+                console.log(statusText); //"succes"로 고정인듯함
+                console.log(jqXHR);
+            },
+            
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log(jqXHR);  //응답 메시지
+                console.log(textStatus); //"error"로 고정인듯함
+                console.log(errorThrown);
+                console.log("실패");
+            }
+        })
+    }
+
+</script>
+
+
+
    </script>
+
+
+
 
 </html>

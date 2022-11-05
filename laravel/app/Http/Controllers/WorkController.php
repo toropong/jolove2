@@ -117,7 +117,9 @@ class WorkController extends Controller
           })->get();
          return view('product', $data);
      }
- 
+
+
+     ## 댓글 작성
      public function comment_update(Request $request){
 
         $u_no = Auth::user()->id;
@@ -133,24 +135,30 @@ class WorkController extends Controller
 
         return response(1);
 
+    }
 
-        //  $result = [];
-        //  if( $request->no ) {
-        //      $comments = \App\Models\Comments::where('no', $request->no)->get();
-        //  } else {
-        //      $comments = new Comments();
-        //  }
- 
-        //  $comments->c_comments = $request->c_comments ?? ""; 
-        //  $comments->u_no = session()->get('id')  ?? 0; 
-        //  $comments->w_no = $request->no  ?? 0;
- 
+    ##댓글 삭제
+    public function comment_delete(Request $request)
+    {
 
-        // $result['result'] = $comments->save();
-                                                            
-        //  return response($result);
+        $id = Auth::user()->id;
+        $result = [];
+
+        if( $request->no ) {
+            $comments = \App\Models\Comments::where('c_no', $request->c_no)->
+            where('u_no', '=' , $id)->get();
+
+            $result['result'] = $comments->delete();
+        } else {
+            $result = [
+                'result' => false,
+                'message' => "댓글이 삭제할 권한이 없습니다."];
+        }
+
+        return response($result);
     }
     
+
     public function like(Request $request){
         $w_no = $request->input('w_no');
         $u_no = Auth::user()->id;

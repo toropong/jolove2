@@ -32,6 +32,8 @@ Route::post('/product/test','WorkController@like');
 
 Route::post('/product/update','WorkController@comment_update' );
 
+Route::post('/product/delete','WorkController@comment_delete' );
+
 Route::get('/register', function () {
     return view('register');
 });
