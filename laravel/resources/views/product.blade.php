@@ -33,14 +33,20 @@
                 </div>
             </div>
             @endforeach
-            @auth
+            @if ( isset ( Auth::user()->id) ) 
+            {{-- @auth --}}
             <th>좋아요</th>
-<td> <input id="likebtn" type="button" value="♥" /></td>
+            @if($likes2==1)
+<td> <input id="likebtn" type="button" value="♥" /><input id = "count"  style="pointer-events: none" value="{{$likes}}"></td>
+            @else
+                <td> <input id="likebtn" type="button" value="♡" /><input id = "count"  style="pointer-events: none" value="{{$likes}}"></td>
+            @endif
             @else
             <th>좋아요</th>
-            <td> <input type="button" value="♥" style="pointer-events: none"/> </td> 
-            @endif 
+            <td> <input type="button" value="♥" style="pointer-events: none"/><input id = "count" value="{{$likes}}"></td> 
             @endif
+            @endif 
+           
             
 
     
@@ -211,12 +217,15 @@
                         console.log(data); //응답 body부 데이터
                         console.log(statusText); //"succes"로 고정인듯함
                         console.log(jqXHR);
-                            if(data=="1"){
+                            if(data['a']=="1"){
                                 $("#likebtn").attr("value","♥");
+                                $("#count").attr("value",data['b']);
                             }
                             else{
                                 $("#likebtn").attr("value","♡");
+                                $("#count").attr("value",data['b']);
                             }
+                           
                             
                     },
                     error: function(jqXHR, textStatus, errorThrown){

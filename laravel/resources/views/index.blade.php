@@ -55,39 +55,26 @@
                                     <a class="btn btn-outline-dark mt-auto" href="">작품 삭제</a>
                                     @endauth
                                 </div>
-                                
                             </div>
-                            
-
                         </div>
                     </div>
-@endforeach
-@endif
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link" href="#">5</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </div>
+                    @endforeach
+
+@endif      
+
+                </div>
+                <div style="text-align: center"> 
+                {{ $lists->links()}}         
                 </div>
             </div>
             
-                </div>
-            </div>
         </section>
         <div class="container px-4 px-lg-5 mt-5" >
-            <button onclick="showdisplay2()">리스트변경</button>
+            
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
-<div class="container_2" style="width: 80%; display:none;" id="second-display" >
-    {{-- <h2>졸업작품</h2> --}}
+                
+<div class="container_2" style="width: 80%; display:none; margin-bottom:20px;" id="second-display" >
+    {{-- <h2>졸업작품</h2> --}}<button onclick="showdisplay2()">리스트변경</button>
     <h3><code>.졸업작품</code></h3> 
     @if(isset($lists))
     @foreach($lists as $list)           
@@ -110,9 +97,14 @@
     </table>
     @endforeach
     @endif
-  </div>       
+    <div style="text-align: center"> 
+        {{ $lists->links()}}         
+        </div>
+  </div>  
+       
     </div>
         </div>
+        
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
