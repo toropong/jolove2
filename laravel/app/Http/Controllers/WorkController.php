@@ -179,14 +179,16 @@ class WorkController extends Controller
             'u_no'=>$u_no,
             'w_no'=>$w_no,
         ]);
-        $favorite['a'] = \App\Models\Likes::select('l_no')->where('w_no','=',$w_no)->count();
-        $favorite['b'] = \App\Models\Likes::select('u_no')->where('w_no','=',$w_no)->where('u_no','=',$u_no)->count();
+        $favorite['a'] = \App\Models\Likes::select('l_no')->where('w_no','=',$w_no)->where('u_no','=',$u_no)->count();
+        //favorite[a]는 하트 색변경
+        //favorite[b]는 좋아요 수
+        $favorite['b'] = \App\Models\Likes::select('u_no')->where('w_no','=',$w_no)->count();
         return response()->json($favorite);
     }
     else if(\App\Models\Likes::where('w_no','=',$w_no)->where('u_no','=',$u_no)->exists()){
         \App\Models\Likes::where('w_no','=',$w_no)->where('u_no','=',$u_no)->delete();
-        $favorite['a'] = \App\Models\Likes::select('l_no')->where('w_no','=',$w_no)->count();
-        $favorite['b'] = \App\Models\Likes::select('u_no')->where('w_no','=',$w_no)->where('u_no','=',$u_no)->count();
+        $favorite['a'] = \App\Models\Likes::select('l_no')->where('w_no','=',$w_no)->where('u_no','=',$u_no)->count();
+        $favorite['b'] = \App\Models\Likes::select('u_no')->where('w_no','=',$w_no)->count();
         return response()->json($favorite);
     } 
      }
