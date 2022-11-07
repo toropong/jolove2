@@ -22,4 +22,10 @@ class ManagerController extends Controller
         $data["manage"] = DB::table('users')->select('*')->get();
        return view('manage/manage', $data);
     }
+
+    function tables(Request $request){
+        $data["work"] = [];
+        $data["work"] = DB::table('works')->select('*')->get();
+        return view('manage/tables', $data);
+    }
 }

@@ -48,10 +48,7 @@ Route::get('/findpw', function () {
 
 Route::get('/manage', 'ManagerController@manage' );
 
-Route::get('/tables', function () {
-    return view('manage/tables');
-});
-
+Route::get('/tables', 'ManagerController@tables' );
 
 Route::post('/find','WorkController@find_id');
 
