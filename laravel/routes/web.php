@@ -46,6 +46,10 @@ Route::get('/findpw', function () {
     return view('findpw');
 });
 
+Route::get('/manage', function () {
+    return view('manage/manage');
+});
+
 Route::post('/find','WorkController@find_id');
 
 Route::post('/findpw','WorkController@find_pw');
