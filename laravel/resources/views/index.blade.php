@@ -97,8 +97,8 @@
       <tbody>
         <tr>
           <td>{{$list['no']}}</td>
-          <td><a href="product/{{$list['no']}}">{{$list['title']}}</a></td>
-          <td><a href="product/{{$list['no']}}">{{$list['cont']}}</a></td>
+          <td><a href="/public/product/{{$list['no']}}">{{$list['title']}}</a></td>
+          <td><a href="/public/product/{{$list['no']}}">{{$list['cont']}}</a></td>
         </tr>
       </tbody>
     </table>

@@ -115,7 +115,12 @@
                                             <td>{{$works->cont}}</td>
                                             <td>{{$works->visit_count}}</td>
                                             {{-- <td>{{$like}}</td> --}}
-                                            <td>삭제</td>
+                                            <td>
+                                                <form name="delete" action="w_remove/{{$works->no}}" method="post">
+                                                  @csrf
+                                                  <input type="submit" name="remove" id="removes" value="삭제" onclick="removeCheck()">
+                                                </form>
+                                              </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -138,6 +143,21 @@
                 </footer>
             </div>
         </div>
+        <script>
+            function removeCheck() {
+
+if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+
+    document.removefrm.submit();
+
+}else{   //취소
+
+    return false;
+
+}
+
+}
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>

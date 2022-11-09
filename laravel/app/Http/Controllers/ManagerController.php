@@ -34,4 +34,14 @@ class ManagerController extends Controller
         // dd($like2);
         return view('manage/tables', $data);
     }
+
+    function remove($id){
+        DB::table('users')->where('id','=',$id)->delete();
+          return redirect('manage')->with('alert','삭제되었습니다.');
+    }
+
+    function w_remove($id){
+        DB::table('works')->where('no','=',$id)->delete();
+          return redirect('manage')->with('alert','삭제되었습니다.');
+    }
 }

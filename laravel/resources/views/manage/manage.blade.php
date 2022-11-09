@@ -122,9 +122,14 @@
                                             <td>{{$manages->name}}</td>
                                             <td>{{$manages->email}}</td>
                                             <td>{{$manages->c_num}}</td>
-                                            <td>{{$manages->id}}</td>
+                                            <td>{{$manages->userid}}</td>
                                             <td>{{$manages->created_at}}</td>
-                                            <td>삭제</td>
+                                            <td>
+                                                <form name="delete" action="remove/{{$manages->id}}" method="post">
+                                                  @csrf
+                                                  <input type="submit" name="remove" id="removes" value="삭제" onclick="removeCheck()">
+                                                </form>
+                                              </td>
                                         </tr>
                                         @endforeach
                                        
@@ -148,6 +153,21 @@
                 </footer>
             </div>
         </div>
+        <script>
+            function removeCheck() {
+
+if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+
+    document.removefrm.submit();
+
+}else{   //취소
+
+    return false;
+
+}
+
+}
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

@@ -58,6 +58,10 @@ Route::post('/findpw','WorkController@find_pw');
 
 Route::post('/image', 'WorkController@store');
 
+Route::post('/remove/{id}', 'ManagerController@remove');
+
+Route::post('/w_remove/{id}', 'ManagerController@w_remove');
+
 
 //  Route::get('register', [RegisterController::class, 'index']) -> name('register');
 Route::post('/register', 'RegisterController@store');
