@@ -44,8 +44,8 @@ class CreateWorksTable extends Migration
             $table->timestamps();
             
             //외래키
-            $table->unsignedBigInteger('u_no')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('u_no')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('u_no');
+            $table->foreign('u_no')->references('id')->on('users');
             
         });
     }
