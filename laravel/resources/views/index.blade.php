@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         <title>Shop Homepage - Start Bootstrap Template</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <!-- Favicon-->
@@ -28,27 +29,33 @@
         </header>
         <!-- Section-->
         <section class="py-5">
+            <form action="{{url('search')}}" method="post" style="text-align: center" >
+                           {{csrf_field()}}
+                <input type="text" name="query" maxlength="255"
+                autocomplete="off" >
+                <input type="submit" value="검색">
+            </form>
             <div class="container px-4 px-lg-5 mt-5" id= first-display>
-                <button onclick="showdisplay()">리스트변경</button>
+                <button onclick="showdisplay()" style="margin-bottom: 10px">리스트변경</button>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 @if(isset($lists))
                 @foreach($lists as $list)
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="\storage\app\public\{{$list['filename']}}" width="200" height="200" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
+                {{-- <div class="col mb-5"> --}}
+                    <div class="big-container" style="width: 20%; height: 20%; border:1px solid; margin:2%; border-radius:3px; display:inline-block ">
+                        <!-- Product image-->
+                        <div class="image-container" style="width: 100%; height:100%; display: inline-block  ">
+                            <div class="image-small" style="width: 100%; height:100%; display:inline-block; position:relative">
+                        <img src="\storage\app\public\{{$list['filename']}}" style="width:100%; height:100%; object-fit: cover;" >
+                        </div>    
+                        </div>
+                        <div class="medium-container">
                                 <div class="text-center">
-                                    <!-- Product name-->
                                     <h5 class="fw-bolder">{{$list['title']}}</h5>
-                                    {{-- Team Name --}}
                                 </div>
                             </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="small-container">
                                 <div class="text-center">
-                                    <a class="btn btn-outline-dark mt-auto" href="/public/product/{{$list['no']}}">
+                                    <a class="btn btn-outline-dark mt-auto" href="/public/product/{{$list['no']}}" >
                                         작품 보기
                                     </a>
                                     @auth
@@ -57,13 +64,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    {{-- </div> --}}
                     @endforeach
 
 @endif      
 
                 </div>
-                <div style="text-align: center"> 
+                <div style="text-align: center; margin-top:50px;"> 
                 {{ $lists->links()}}         
                 </div>
             </div>
@@ -97,7 +104,7 @@
     </table>
     @endforeach
     @endif
-    <div style="text-align: center"> 
+    <div style="text-align: center; margin-top:50px;"> 
         {{ $lists->links()}}         
         </div>
   </div>  

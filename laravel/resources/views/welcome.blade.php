@@ -59,7 +59,7 @@
                             <div class="col mb-5 mb-md-0 h-100">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
                                 <h2 class="h5">개최 일시</h2>
-                                <p class="mb-0">2022.00.00(월) - 2022.00.00(수)</p>
+                                <p class="mb-0">2022.11.30(수) - 2022.12.02(금)</p>
                             </div>
                             <div class="col h-100">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>

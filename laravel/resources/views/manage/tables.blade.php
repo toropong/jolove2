@@ -101,8 +101,8 @@
                                             <th>작품명</th>
                                             <th>년도</th>
                                             <th>내용</th>
-                                            <th>좋아요</th>
                                             <th>조회수</th>
+                                            {{-- <th>좋아요</th> --}}
                                             
                                         </tr>
                                     </thead>
@@ -113,11 +113,11 @@
                                             <td>{{$works->title}}</td>
                                             <td>{{$works->year}}</td>
                                             <td>{{$works->cont}}</td>
-                                            <td>61</td>
                                             <td>{{$works->visit_count}}</td>
+                                            {{-- <td>{{$like}}</td> --}}
                                             <td>삭제</td>
                                         </tr>
-                                       @endforeach
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

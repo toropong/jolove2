@@ -25,7 +25,13 @@ class ManagerController extends Controller
 
     function tables(Request $request){
         $data["work"] = [];
-        $data["work"] = DB::table('works')->select('*')->get();
+        $data["work"] = DB::table('works')->select('*')->orderby("no", "asc")->get();
+        // $data["like1"] = [];
+        // $like1 = DB::table('likes')->select('*')->get();
+        // // $data["like2"] = [];
+        // $like2 = DB::table('works')->union($like1)->get();
+        
+        // dd($like2);
         return view('manage/tables', $data);
     }
 }

@@ -50,11 +50,14 @@ Route::get('/manage', 'ManagerController@manage' );
 
 Route::get('/tables', 'ManagerController@tables' );
 
+Route::any('/search', 'WorkController@result');
+
 Route::post('/find','WorkController@find_id');
 
 Route::post('/findpw','WorkController@find_pw');
 
 Route::post('/image', 'WorkController@store');
+
 
 //  Route::get('register', [RegisterController::class, 'index']) -> name('register');
 Route::post('/register', 'RegisterController@store');
