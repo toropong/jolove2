@@ -8,7 +8,7 @@
     <title>id찾기</title>
     <link href="css/login.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-    
+      
 </head>
 <body>
     <div class="login-container">
@@ -19,7 +19,7 @@
             <div class="textForm">이름
                 <input type="text" class="id" name="name" id="find_id" placeholder="이 름">
             </div>
-            <div class="textForm">휴대전화
+            <div class="textForm">휴대 전화
                 <input type="text" id="find_phonenum" name="phone_num" class="pw" placeholder="휴대전화번호">
             </div>
             <div id="numblank"></div>
