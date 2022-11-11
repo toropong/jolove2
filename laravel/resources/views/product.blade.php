@@ -259,7 +259,7 @@
                     console.log(jqXHR);  //응답 메시지
                        console.log(textStatus); //"error"로 고정인듯함
                        console.log(errorThrown);
-                    console.log("실패");
+                    console.log("실패"); //변경사항
                  }
             })
     }
