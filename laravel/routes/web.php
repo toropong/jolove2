@@ -34,6 +34,8 @@ Route::post('/product/update','WorkController@comment_update' );
 
 Route::post('/product/delete','WorkController@comment_delete' );
 
+
+
 Route::get('/register', function () {
     return view('register');
 });
@@ -51,6 +53,8 @@ Route::get('/manage', 'ManagerController@manage' );
 Route::get('/tables', 'ManagerController@tables' );
 
 Route::any('/search', 'WorkController@result');
+
+// Route::get('/product/delete/{id}', 'WorkController@delete' );
 
 Route::post('/find','WorkController@find_id');
 

@@ -12,4 +12,16 @@ class Works extends Model
     protected $primaryKey = 'no';
     public $incrementing = true;
 
+
+    public static function getYears()
+    {
+        return array_column(
+            self::select('year')
+                ->distinct()
+                ->orderby('year', 'desc')
+                ->get()
+                ->toArray(),
+            'year'
+        );
+    }
 }

@@ -58,9 +58,9 @@
                                     <a class="btn btn-outline-dark mt-auto" href="/public/product/{{$list['no']}}" >
                                         작품 보기
                                     </a>
-                                    @auth
-                                    <a class="btn btn-outline-dark mt-auto" href="">작품 삭제</a>
-                                    @endauth
+                                    {{-- @auth
+                                    <a class="btn btn-outline-dark mt-auto" href="/public/product/delete/{{$list['no']}}">작품 삭제</a>
+                                    @endauth --}}
                                 </div>
                             </div>
                         </div>

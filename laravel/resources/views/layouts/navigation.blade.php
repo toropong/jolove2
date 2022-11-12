@@ -10,8 +10,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">작품 리스트</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item" href="/index/2021">2021 학년도</a></li>
-                        <li><a class="dropdown-item" href="/index/2022">2022 학년도</a></li>
+                        @foreach (App\Models\Works::getYears() as $year)
+                        <li><a class="dropdown-item" href="index/{{$year}}">{{ $year }} 학년도</a></li>
+@endforeach
                                             </ul>
                                         </li>
                                         @auth

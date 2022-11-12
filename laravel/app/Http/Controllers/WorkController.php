@@ -36,28 +36,48 @@ class WorkController extends Controller
 
 
     public function store(Request $request)
-    {   
-        // // $files = $request->file('picture');
+    {   $u_no = Auth::user()->id;
+        $file1= $request -> file('picture2');
+        $file2= $request -> file('picture3');
+        $file3= $request -> file('picture4');
+ 
         $path = $request -> file('picture') -> store('/', 'public');
+  
+        if($file1!=null){
         $subpath =  $request -> file('picture2') -> store('/', 'public');
+       }
+       if($file2!=null){
         $subpath2 =  $request -> file('picture3') -> store('/', 'public');
+       }
+       else{
+        $subpath2 = '';
+       }
+       if($file3!=null){
         $subpath3 = $request -> file('picture4') -> store('/', 'public');
-               $u_no = Auth::user()->id;
+              }
+              else{
+                $subpath3='';
+              }
+         
        
         DB::table('works')->insert([
         'title' => $request->input('title'),
         'cont' => $request->input('cont'),
         'year' => $request->input('year'),
         'filename'=>$path,
+        'u_no' =>$u_no,
         'subimage_1'=>$subpath,
         'subimage_2'=>$subpath2,
         'subimage_3'=>$subpath3,
-              'u_no' =>$u_no,
         ]);
-        return redirect('/');
-    
-            
+        echo "<script>alert('등록되었습니다.');
+        window.close();</script>";
+           
+        
+       
     }
+       
+            
 
 
     public function index(Request $request)
@@ -234,5 +254,13 @@ class WorkController extends Controller
     );
   
   }
+
+//   public function delete($id){
+//     {
+//         DB::table('works')->where('no','=',$id)->delete();
+//           echo "<script>alert('삭제되었습니다.');</script>";
+//         return redirect('manage');
+//     }
+//   }
 }
     

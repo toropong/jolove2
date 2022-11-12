@@ -10,8 +10,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">작품 리스트</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item" href="/index/2021">2021 학년도</a></li>
-                        <li><a class="dropdown-item" href="/index/2022">2022 학년도</a></li>
+                        <?php $__currentLoopData = App\Models\Works::getYears(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $year): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><a class="dropdown-item" href="index/<?php echo e($year); ?>"><?php echo e($year); ?> 학년도</a></li>
+<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </ul>
                                         </li>
                                         <?php if(auth()->guard()->check()): ?>
