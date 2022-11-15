@@ -40,9 +40,10 @@ class WorkController extends Controller
         $file1= $request -> file('picture2');
         $file2= $request -> file('picture3');
         $file3= $request -> file('picture4');
- 
+        $year = $request -> input('year');
         $path = $request -> file('picture') -> store('/', 'public');
-  
+        
+
         if($file1!=null){
         $subpath =  $request -> file('picture2') -> store('/', 'public');
        }
@@ -58,8 +59,12 @@ class WorkController extends Controller
               else{
                 $subpath3='';
               }
+        if(2023<$year||$year<2020){
+            echo"<script>alert('2020년도부터 2023년도 사이만 등록가능합니다.');location.reload();
+            history.back();</script>";
+        }
          
-       
+       if(isset($file1)){
         DB::table('works')->insert([
         'title' => $request->input('title'),
         'cont' => $request->input('cont'),
@@ -72,8 +77,18 @@ class WorkController extends Controller
         ]);
         echo "<script>alert('등록되었습니다.');
         window.close();</script>";
-           
-        
+    }
+     else{
+        DB::table('works')->insert([
+            'title' => $request->input('title'),
+            'cont' => $request->input('cont'),
+            'year' => $request->input('year'),
+            'filename'=>$path,
+            'u_no' =>$u_no,
+        ]);
+        echo "<script>alert('등록되었습니다.');
+        window.close();</script>";
+     }
        
     }
        
@@ -165,7 +180,7 @@ class WorkController extends Controller
             ]); 
 
         return response(1);
-
+        
     }
 
     ##댓글 삭제

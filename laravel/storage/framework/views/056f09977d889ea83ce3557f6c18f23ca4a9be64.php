@@ -59,9 +59,7 @@
                                     <a class="btn btn-outline-dark mt-auto" href="/public/product/<?php echo e($list['no']); ?>" >
                                         작품 보기
                                     </a>
-                                    <?php if(auth()->guard()->check()): ?>
-                                    <a class="btn btn-outline-dark mt-auto" href="/public/product/delete/<?php echo e($list['no']); ?>">작품 삭제</a>
-                                    <?php endif; ?>
+                                    
                                 </div>
                             </div>
                         </div>

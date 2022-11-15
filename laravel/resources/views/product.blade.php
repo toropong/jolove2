@@ -25,11 +25,9 @@
                 @if(isset($product))
             @foreach($product as $products)
                 
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="\storage\app\public\{{$products['filename']}}" width="200" height="200" style="border-style: solid" onerror="this.style.display='none'" /></div>
-                <div class="col-lg-5">
-                    <h1 class="font-weight-light"></h1>
+                <div class="col-lg-7" style="width: 30%;"><img class="img-fluid rounded mb-4 mb-lg-0" src="\storage\app\public\{{$products['filename']}}" width="200" height="200" style="border-style: solid" onerror="this.style.display='none'" /></div>
+                <div class="col-lg-5" style="width: 200px; height:200px; border:1px solid;">
                     <p>{{$products['title']}}</p>
-                    <a class="btn btn-primary" href="#!">소스코드 보기</a>
                 </div>
             </div>
             @endforeach
@@ -51,7 +49,7 @@
 
     
                <div class="view isk">
-                    <img src="/img/eye.png" width="16" height="16" alt="조회수">
+                <ion-icon name="eye-outline" size="medium"></ion-icon>조회수
                     <div class="see_num intf" name="">
                      @if ($products['visit_count'] !=0)
                         <span>{{$products['visit_count']}}</span>
@@ -77,7 +75,6 @@
                            <img class="img-fluid rounded mb-4 mb-lg-0" src= "\storage\app\public\{{$products['subimage_1']}}" width="200" height="200" onerror="this.style.display='none'" />
                         @endforeach
                         </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">보러가기</a></div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
@@ -88,7 +85,7 @@
                             <img class="img-fluid rounded mb-4 mb-lg-0" src= "\storage\app\public\{{$products['subimage_2']}}" width="200" height="200"onerror="this.style.display='none'"/>
                             @endforeach
                         </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">보러가기</a></div>
+
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
@@ -99,7 +96,6 @@
                             <img class="img-fluid rounded mb-4 mb-lg-0"src= "\storage\app\public\{{$products['subimage_3']}}" width="200" height="200" onerror="this.style.display='none'"/>
                             @endforeach
                         </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">보러가기</a></div>
                     </div>
                 </div>
             </div>
@@ -128,33 +124,27 @@
                 </div>
                 </div>
             </form>
-
-
               <div class="comment_new">
                 <div class="">
 
                   <h3>전체 댓글</h3>
                 </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>작성자번호</th>
+                            <th>댓글내용</th>
+                        </tr>
+                    </thead>
+                    <tbody
                      @foreach ($comment as $key => $comments)
-                  <div class="create_comment">
-                    <div class="neadcomt">
-                      <div class="comment_naeyoung">
-                        <div class="comment_people">
-
-                          {{$comments['u_no']}}
-                        </div>
-                        <div class="value_comment">
-                          <p> {{$comments['c_comments']}}</p>
-                        </div>
-                    </div>
-
-                    <div class="delete">
-                    <button type="button" class="btn btn-sm btn-primary" id="btn_comment_delete">글삭제</button>
-                    </div>
-
-                  </div>
+                     <tr>
+                        <td>{{$comments['u_no']}}</td>
+                        <td>{{$comments['c_comments']}}</td>
+                        <td><button type="button" class="btn btn-sm btn-primary" id="btn_comment_delete">글삭제</button></td>
                 @endforeach
-              </div>
+            </tbody>
+        </table>
             </div>
           </div>
 
@@ -178,9 +168,10 @@
         </footer>
         
 
-
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script type="text/javascript">
-            
+
        
         $(document).on("click", "#btn_custom_update", function () {
                 custom_update();
@@ -262,6 +253,7 @@
                     console.log("실패"); //변경사항
                  }
             })
+            location.reload();
     }
 
 
