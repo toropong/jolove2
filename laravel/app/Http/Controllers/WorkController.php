@@ -183,25 +183,20 @@ class WorkController extends Controller
         
     }
 
+
     ##댓글 삭제
     public function comment_delete(Request $request)
     {
-
-        $id = Auth::user()->id;
-        $result = [];
-
-        if( $request->no ) {
-            $comments = \App\Models\Comments::where('c_no', $request->c_no)->
-            where('u_no', '=' , $id)->get();
-
-            $result['result'] = $comments->delete();
-        } else {
-            $result = [
-                'result' => false,
-                'message' => "댓글이 삭제할 권한이 없습니다."];
+        $u_no = Auth::user()->id;
+        $c_no=$request->c_no;
+        
+        if(\App\Models\Comments::where('u_no','=', $u_no)->exists()){
+        \App\Models\Comments::where('c_no', '=' , $c_no)->delete();
+            return response(1);
+    }
+        else{
+           return response(2);
         }
-
-        return response($result);
     }
     
 

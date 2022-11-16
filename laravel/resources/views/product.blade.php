@@ -107,23 +107,19 @@
               <h2>댓글</h2>
             </div>
 
-            <form class="form-horizontal" method="POST"  role="form" name="frm_custom" id="frm_custom"  enctype="multipart/form-data">
-                {{csrf_field()}}
-                @foreach($comment as $comments)
-              <input type="hidden" name="no" id="no" value="{{ $comments['w_no'] }}"> 
-              <input type="hidden" name="c_no" id="c_no" value="{{ $comments['c_no'] }}"> 
-                 @endforeach
+            <!-- <form class="form-horizontal" action="/product/update" method="POST"  role="form" name="frm_custom" id="frm_custom"  enctype="multipart/form-data"> -->
+                <!-- {{csrf_field()}} -->
               <div class="combox">
                 <div class="comcontent">
                   <div class="comment_munie">
-                    <textarea class="comment_text" name="c_comments" id="c_comments" rows="8" cols="80" placeholder="댓글 내용 입력" required></textarea>
+                    <textarea  name="c_comments" id="c_comments" value="" rows="8" cols="80" placeholder="댓글 내용 입력" required> </textarea>
                   </div>
                     <div class="col-xs-12 mt-3 text-center">
                         <button type="button" class="btn btn-sm btn-primary" id="btn_custom_update">글작성</button>
                     </div>
                 </div>
                 </div>
-            </form>
+            <!-- </form> -->
               <div class="comment_new">
                 <div class="">
 
@@ -136,9 +132,10 @@
                             <th>댓글내용</th>
                         </tr>
                     </thead>
-                    <tbody
+                    <tbody>
                      @foreach ($comment as $key => $comments)
                      <tr>
+                        <input type="hidden" name="c_no" value="{{$comments['c_no']}}" id="c_no"></input>
                         <td>{{$comments['u_no']}}</td>
                         <td>{{$comments['c_comments']}}</td>
                         <td><button type="button" class="btn btn-sm btn-primary" id="btn_comment_delete">글삭제</button></td>
@@ -188,8 +185,8 @@
         
 
         var w_no = {{$products->no}};
-        var c_comments = $("#c_comments").serialize();
-        var c_no = $("#c_no").serialize();
+        var c_no = $("#c_no").val();
+        var c_comments = $("#c_comments").val();
 
 
     function likedata(){
@@ -230,14 +227,15 @@
 
     function custom_update() {
 
-        $.ajax({
+    $.ajax({
     type : 'POST',
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
     url : 'update', 
     async : true,
-   data: {'c_comments' : c_comments,
-            'w_no' : w_no},
+    data: {
+        'c_comments': $("#c_comments").val(),
+        'w_no' : w_no},
          dataType : 'json',
          success: function(data, statusText, jqXHR){
                     console.log("성공")
@@ -265,8 +263,7 @@
     url : 'delete', 
     async : true,
     data: {
-        'c_no' :c_no,
-        'c_comments' : c_comments,
+        'c_no': $("#c_no").val(),
         'w_no' : w_no},
     dataType : 'json',
     success: function(data, statusText, jqXHR){
@@ -274,6 +271,9 @@
                 console.log(data); //응답 body부 데이터
                 console.log(statusText); //"succes"로 고정인듯함
                 console.log(jqXHR);
+                if(data==2){
+                   alert('권한이없습니다.'); location.reload();
+                }
             },
             
             error: function(jqXHR, textStatus, errorThrown){
@@ -286,12 +286,5 @@
     }
 
 </script>
-
-
-
-   </script>
-
-
-
 
 </html>
