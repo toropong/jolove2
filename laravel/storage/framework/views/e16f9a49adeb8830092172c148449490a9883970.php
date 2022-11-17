@@ -25,7 +25,7 @@
                 <?php if(isset($product)): ?>
             <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 
-                <div class="col-lg-7" style="width: 30%;"><img class="img-fluid rounded mb-4 mb-lg-0" src="\storage\app\public\<?php echo e($products['filename']); ?>" width="200" height="200" style="border-style: solid" onerror="this.style.display='none'" /></div>
+                <div class="col-lg-7" style="width: 30%;"><img class="img-fluid rounded mb-4 mb-lg-0" src="/imglib/<?php echo e($products['filename']); ?>" width="200" height="200" style="border-style: solid" onerror="this.style.display='none'" /></div>
                 <div class="col-lg-5" style="width: 200px; height:200px; border:1px solid;">
                     <p><?php echo e($products['title']); ?></p>
                 </div>
@@ -70,7 +70,7 @@
                         <div class="card-body">
                             <h2 class="card-title">이미지 2</h2>
                             <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                           <img class="img-fluid rounded mb-4 mb-lg-0" src= "\storage\app\public\<?php echo e($products['subimage_1']); ?>" width="200" height="200" onerror="this.style.display='none'" />
+                           <img class="img-fluid rounded mb-4 mb-lg-0" src= "/imglib/<?php echo e($products['subimage_1']); ?>" width="200" height="200" onerror="this.style.display='none'" />
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                         <div class="card-body">
                             <h2 class="card-title">이미지 3</h2>
                             <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <img class="img-fluid rounded mb-4 mb-lg-0" src= "\storage\app\public\<?php echo e($products['subimage_2']); ?>" width="200" height="200"onerror="this.style.display='none'"/>
+                            <img class="img-fluid rounded mb-4 mb-lg-0" src= "/imglib/<?php echo e($products['subimage_2']); ?>" width="200" height="200"onerror="this.style.display='none'"/>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
 
@@ -91,7 +91,7 @@
                         <div class="card-body">
                             <h2 class="card-title">이미지 4</h2>
                             <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <img class="img-fluid rounded mb-4 mb-lg-0"src= "\storage\app\public\<?php echo e($products['subimage_3']); ?>" width="200" height="200" onerror="this.style.display='none'"/>
+                            <img class="img-fluid rounded mb-4 mb-lg-0"src= "/imglib/<?php echo e($products['subimage_3']); ?>" width="200" height="200" onerror="this.style.display='none'"/>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
@@ -131,13 +131,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                     <?php $__currentLoopData = $comment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $comments): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        
+                            <?php $__currentLoopData = $comment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comments): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                           
                      <tr>
-                        <input type="hidden" name="c_no" value="<?php echo e($comments['c_no']); ?>" id="c_no"></input>
                         <td><?php echo e($comments['u_no']); ?></td>
                         <td><?php echo e($comments['c_comments']); ?></td>
-                        <td><button type="button" class="btn btn-sm btn-primary" id="btn_comment_delete">글삭제</button></td>
+                        <?php if($comments->u_no==Auth::user()->id): ?><td>
+                            <form action="delete/<?php echo e($comments->c_no); ?>"  method="POST">
+                            <?php echo csrf_field(); ?>
+                                <button type="submit"  class="btn btn-sm btn-primary" id="btn_comment_delete" name="remove" id="removes" value="삭제">삭제</button>
+                              </form>
+                            </td>
+                     <?php endif; ?>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </form>
             </tbody>
         </table>
             </div>
@@ -183,7 +191,6 @@
         
 
         var w_no = <?php echo e($products->no); ?>;
-        var c_no = $("#c_no").val();
         var c_comments = $("#c_comments").val();
 
 
@@ -261,7 +268,7 @@
     url : 'delete', 
     async : true,
     data: {
-        'c_no': $("#c_no").val(),
+        'c_no': $('#c_no').val(),
         'w_no' : w_no},
     dataType : 'json',
     success: function(data, statusText, jqXHR){
@@ -269,8 +276,9 @@
                 console.log(data); //응답 body부 데이터
                 console.log(statusText); //"succes"로 고정인듯함
                 console.log(jqXHR);
-                if(data==2){
-                   alert('권한이없습니다.'); location.reload();
+            
+                 if(data==1){
+                    alert('삭제되었습니다.'); location.reload();
                 }
             },
             

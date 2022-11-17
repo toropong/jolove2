@@ -25,7 +25,7 @@
                 @if(isset($product))
             @foreach($product as $products)
                 
-                <div class="col-lg-7" style="width: 30%;"><img class="img-fluid rounded mb-4 mb-lg-0" src="\storage\app\public\{{$products['filename']}}" width="200" height="200" style="border-style: solid" onerror="this.style.display='none'" /></div>
+                <div class="col-lg-7" style="width: 30%;"><img class="img-fluid rounded mb-4 mb-lg-0" src="/imglib/{{$products['filename']}}" width="200" height="200" style="border-style: solid" onerror="this.style.display='none'" /></div>
                 <div class="col-lg-5" style="width: 200px; height:200px; border:1px solid;">
                     <p>{{$products['title']}}</p>
                 </div>
@@ -72,7 +72,7 @@
                         <div class="card-body">
                             <h2 class="card-title">이미지 2</h2>
                             @foreach($product as $products)
-                           <img class="img-fluid rounded mb-4 mb-lg-0" src= "\storage\app\public\{{$products['subimage_1']}}" width="200" height="200" onerror="this.style.display='none'" />
+                           <img class="img-fluid rounded mb-4 mb-lg-0" src= "/imglib/{{$products['subimage_1']}}" width="200" height="200" onerror="this.style.display='none'" />
                         @endforeach
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                         <div class="card-body">
                             <h2 class="card-title">이미지 3</h2>
                             @foreach($product as $products)
-                            <img class="img-fluid rounded mb-4 mb-lg-0" src= "\storage\app\public\{{$products['subimage_2']}}" width="200" height="200"onerror="this.style.display='none'"/>
+                            <img class="img-fluid rounded mb-4 mb-lg-0" src= "/imglib/{{$products['subimage_2']}}" width="200" height="200"onerror="this.style.display='none'"/>
                             @endforeach
                         </div>
 
@@ -93,7 +93,7 @@
                         <div class="card-body">
                             <h2 class="card-title">이미지 4</h2>
                             @foreach($product as $products)
-                            <img class="img-fluid rounded mb-4 mb-lg-0"src= "\storage\app\public\{{$products['subimage_3']}}" width="200" height="200" onerror="this.style.display='none'"/>
+                            <img class="img-fluid rounded mb-4 mb-lg-0"src= "/imglib/{{$products['subimage_3']}}" width="200" height="200" onerror="this.style.display='none'"/>
                             @endforeach
                         </div>
                     </div>
@@ -133,13 +133,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                     @foreach ($comment as $key => $comments)
+                        
+                            @foreach ($comment as $comments)
+                           
                      <tr>
-                        <input type="hidden" name="c_no" value="{{$comments['c_no']}}" id="c_no"></input>
                         <td>{{$comments['u_no']}}</td>
                         <td>{{$comments['c_comments']}}</td>
-                        <td><button type="button" class="btn btn-sm btn-primary" id="btn_comment_delete">글삭제</button></td>
+                        @if($comments->u_no==Auth::user()->id)<td>
+                            <form action="delete/{{$comments->c_no}}"  method="POST">
+                            @csrf
+                                <button type="submit"  class="btn btn-sm btn-primary" id="btn_comment_delete" name="remove" id="removes" value="삭제">삭제</button>
+                              </form>
+                            </td>
+                     @endif
                 @endforeach
+            </form>
             </tbody>
         </table>
             </div>
@@ -185,7 +193,6 @@
         
 
         var w_no = {{$products->no}};
-        var c_no = $("#c_no").val();
         var c_comments = $("#c_comments").val();
 
 
@@ -263,7 +270,7 @@
     url : 'delete', 
     async : true,
     data: {
-        'c_no': $("#c_no").val(),
+        'c_no': $('#c_no').val(),
         'w_no' : w_no},
     dataType : 'json',
     success: function(data, statusText, jqXHR){
@@ -271,8 +278,9 @@
                 console.log(data); //응답 body부 데이터
                 console.log(statusText); //"succes"로 고정인듯함
                 console.log(jqXHR);
-                if(data==2){
-                   alert('권한이없습니다.'); location.reload();
+            
+                 if(data==1){
+                    alert('삭제되었습니다.'); location.reload();
                 }
             },
             

@@ -32,7 +32,7 @@ Route::post('/product/test','WorkController@like');
 
 Route::post('/product/update','WorkController@comment_update' );
 
-Route::post('/product/delete','WorkController@comment_delete' );
+Route::post('/product/delete/{id}','WorkController@comment_delete' );
 
 
 

@@ -154,7 +154,7 @@ class WorkController extends Controller
 
          #댓글
          $data["comment"]=[];
-         $data["comment"]= \App\Models\Comments::select()
+         $data["comment"]= \App\Models\Comments::select('*')
          ->leftjoin('works', 'works.no', '=', 'comments.w_no')
          ->where(function ($query) use ($request) {
            if($request->no) {
@@ -185,18 +185,11 @@ class WorkController extends Controller
 
 
     ##댓글 삭제
-    public function comment_delete(Request $request)
-    {
-        $u_no = Auth::user()->id;
-        $c_no=$request->c_no;
-        
-        if(\App\Models\Comments::where('u_no','=', $u_no)->exists()){
-        \App\Models\Comments::where('c_no', '=' , $c_no)->delete();
-            return response(1);
-    }
-        else{
-           return response(2);
-        }
+    public function comment_delete($id)
+    {  
+        //  $c_no = $request->c_no;
+       DB::table('comments')->where('c_no', '=' , $id)->delete();
+       echo "<script>alert('삭제되었습니다.'); history.back(); location.reload();</script>";
     }
     
 

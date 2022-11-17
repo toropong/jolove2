@@ -46,7 +46,7 @@
                         <!-- Product image-->
                         <div class="image-container" style="width: 100%; height:100%; display: inline-block  ">
                             <div class="image-small" style="width: 100%; height:100%; display:inline-block; position:relative">
-                        <img src="\storage\app\public\<?php echo e($list['filename']); ?>" style="width:100%; height:100%; object-fit: cover;" >
+                        <img src="/imglib/<?php echo e($list['filename']); ?>" style="width:100%; height:100%; object-fit: cover;" >
                         </div>    
                         </div>
                         <div class="medium-container">
@@ -56,7 +56,7 @@
                             </div>
                             <div class="small-container">
                                 <div class="text-center">
-                                    <a class="btn btn-outline-dark mt-auto" href="/public/product/<?php echo e($list['no']); ?>" >
+                                    <a class="btn btn-outline-dark mt-auto" href="/product/<?php echo e($list['no']); ?>" >
                                         작품 보기
                                     </a>
                                     
@@ -96,8 +96,8 @@
       <tbody>
         <tr>
           <td><?php echo e($list['no']); ?></td>
-          <td><a href="/public/product/<?php echo e($list['no']); ?>"><?php echo e($list['title']); ?></a></td>
-          <td><a href="/public/product/<?php echo e($list['no']); ?>"><?php echo e($list['cont']); ?></a></td>
+          <td><a href="/product/<?php echo e($list['no']); ?>"><?php echo e($list['title']); ?></a></td>
+          <td><a href="/product/<?php echo e($list['no']); ?>"><?php echo e($list['cont']); ?></a></td>
         </tr>
       </tbody>
     </table>

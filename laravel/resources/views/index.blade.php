@@ -45,7 +45,7 @@
                         <!-- Product image-->
                         <div class="image-container" style="width: 100%; height:100%; display: inline-block  ">
                             <div class="image-small" style="width: 100%; height:100%; display:inline-block; position:relative">
-                        <img src="\storage\app\public\{{$list['filename']}}" style="width:100%; height:100%; object-fit: cover;" >
+                        <img src="/imglib/{{$list['filename']}}" style="width:100%; height:100%; object-fit: cover;" >
                         </div>    
                         </div>
                         <div class="medium-container">
@@ -55,7 +55,7 @@
                             </div>
                             <div class="small-container">
                                 <div class="text-center">
-                                    <a class="btn btn-outline-dark mt-auto" href="/public/product/{{$list['no']}}" >
+                                    <a class="btn btn-outline-dark mt-auto" href="/product/{{$list['no']}}" >
                                         작품 보기
                                     </a>
                                     {{-- @auth
@@ -97,8 +97,8 @@
       <tbody>
         <tr>
           <td>{{$list['no']}}</td>
-          <td><a href="/public/product/{{$list['no']}}">{{$list['title']}}</a></td>
-          <td><a href="/public/product/{{$list['no']}}">{{$list['cont']}}</a></td>
+          <td><a href="/product/{{$list['no']}}">{{$list['title']}}</a></td>
+          <td><a href="/product/{{$list['no']}}">{{$list['cont']}}</a></td>
         </tr>
       </tbody>
     </table>
