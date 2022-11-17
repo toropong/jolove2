@@ -19,15 +19,18 @@
         <?php echo $__env->make('layouts.navigation', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- Page Content-->
         <section class="py-5">
-        <div class="container px-4 px-lg-5" style="width: 100%; height:100%;">
-            <h2 class="title-image" style="margin-top: 1rem;">대표이미지</h2>
-            <div class="row gx-4 gx-lg-5 align-items-center my-5" style="width: 100%">
-                <?php if(isset($product)): ?>
+        <div class="container px-4 px-lg-5" style="width: 100%; height:100%; margin:0;">
+            <?php if(isset($product)): ?>
             <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <h2 class="title-image" style="margin-top: 1rem;">작품명 : <?php echo e($products['title']); ?></h2>
+           
+            <p>대표이미지</p>
+            <div class="row gx-4 gx-lg-5 align-items-center " style="width: 100%">
+           
                 
                 <div class="col-lg-7" style="width: 30%;"><img class="img-fluid rounded mb-4 mb-lg-0" src="/imglib/<?php echo e($products['filename']); ?>" width="200" height="200" style="border-style: solid" onerror="this.style.display='none'" /></div>
                 <div class="col-lg-5" style="width: 200px; height:200px; border:1px solid;">
-                    <p><?php echo e($products['title']); ?></p>
+                    <p><?php echo e($products['cont']); ?></p>
                 </div>
             </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

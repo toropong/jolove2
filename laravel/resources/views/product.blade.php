@@ -19,15 +19,18 @@
         @include('layouts.navigation')
         <!-- Page Content-->
         <section class="py-5">
-        <div class="container px-4 px-lg-5" style="width: 100%; height:100%;">
-            <h2 class="title-image" style="margin-top: 1rem;">대표이미지</h2>
-            <div class="row gx-4 gx-lg-5 align-items-center my-5" style="width: 100%">
-                @if(isset($product))
+        <div class="container px-4 px-lg-5" style="width: 100%; height:100%; margin:0;">
+            @if(isset($product))
             @foreach($product as $products)
+            <h2 class="title-image" style="margin-top: 1rem;">작품명 : {{$products['title']}}</h2>
+           
+            <p>대표이미지</p>
+            <div class="row gx-4 gx-lg-5 align-items-center " style="width: 100%">
+           
                 
                 <div class="col-lg-7" style="width: 30%;"><img class="img-fluid rounded mb-4 mb-lg-0" src="/imglib/{{$products['filename']}}" width="200" height="200" style="border-style: solid" onerror="this.style.display='none'" /></div>
                 <div class="col-lg-5" style="width: 200px; height:200px; border:1px solid;">
-                    <p>{{$products['title']}}</p>
+                    <p>{{$products['cont']}}</p>
                 </div>
             </div>
             @endforeach
