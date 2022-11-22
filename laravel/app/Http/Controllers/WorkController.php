@@ -141,6 +141,7 @@ class WorkController extends Controller
             }
         })->count();
 
+        if( Auth::user()){
         $data["likes2"]= \App\Models\Likes::select("*")
         ->where(function ($query) use ($request) {
             if ($request->no) {
@@ -148,9 +149,10 @@ class WorkController extends Controller
             }
         })->where('u_no' , Auth::user()->id)
         ->count();
-
-
-
+    }
+    else{
+        $data["likes2"]=0; 
+    }
 
          #댓글
          $data["comment"]=[];
@@ -189,7 +191,7 @@ class WorkController extends Controller
     {  
         //  $c_no = $request->c_no;
        DB::table('comments')->where('c_no', '=' , $id)->delete();
-       echo "<script>alert('삭제되었습니다.'); history.back(); location.reload();</script>";
+       echo "<script>alert('삭제되었습니다.'); location.href=document.referrer;</script>";
     }
     
 
@@ -257,13 +259,12 @@ class WorkController extends Controller
     );
   
   }
+  public function all(Request $request){
+    $data["lists"] = [];
+    $data["lists"]= \App\Models\Works::select('*')
+    -> orderby("visit_count", "desc")->simplepaginate(4);
+    return view('index', $data);
+  }
 
-//   public function delete($id){
-//     {
-//         DB::table('works')->where('no','=',$id)->delete();
-//           echo "<script>alert('삭제되었습니다.');</script>";
-//         return redirect('manage');
-//     }
-//   }
 }
     

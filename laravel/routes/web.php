@@ -24,6 +24,8 @@ Route::get('/login', 'LoginController@login');
 
 Route::get('/index/{year}',[WorkController::class, 'index']); 
 
+Route::get('/index',[WorkController::class, 'all']); 
+
 Route::get('/product/{no}',[WorkController::class, 'product']); 
 
 // Route::post('/product/like',[WorkController::class, 'like']);
