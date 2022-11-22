@@ -12,4 +12,8 @@ class Comments extends Model
     protected $primaryKey = 'c_no';
     public $incrementing = true;
 
+<<<<<<< HEAD
 }   
+=======
+}
+>>>>>>> likes

@@ -59,4 +59,18 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+<<<<<<< HEAD
+=======
+  'spatie/laravel-analytics' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\Analytics\\AnalyticsServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Analytics' => 'Spatie\\Analytics\\AnalyticsFacade',
+    ),
+  ),
+>>>>>>> likes
 );
