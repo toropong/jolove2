@@ -109,7 +109,6 @@
             <div class="dat_lab">
               <h2>댓글</h2>
             </div>
-<<<<<<< HEAD
 
             <!-- <form class="form-horizontal" action="/product/update" method="POST"  role="form" name="frm_custom" id="frm_custom"  enctype="multipart/form-data"> -->
                 <!-- {{csrf_field()}} -->
@@ -119,34 +118,16 @@
                     <textarea  name="c_comments" id="c_comments" value="" rows="8" cols="80" placeholder="댓글 내용 입력" required> </textarea>
                   </div>
                     <div class="col-xs-12 mt-3 text-center">
-=======
-            <form class="form-horizontal" role="form" name="frm_custom" id="frm_custom">
-            {{csrf_field()}}
-            @foreach($comment as $comments)
-              <input type="hidden" name="no" id="no" value="{{ $comments['w_no'] }}">
-            @endforeach
-              <div class="combox">
-                <div class="comcontent">
-                  <div class="comment_munie">
-                    <textarea class="comment_text" name="c_comments" id="comment_texts" rows="8" cols="80" placeholder="댓글 내용 입력" required></textarea>
-                  </div>
-                  <div class="col-xs-12 mt-3 text-center">
->>>>>>> likes
                         <button type="button" class="btn btn-sm btn-primary" id="btn_custom_update">글작성</button>
                     </div>
                 </div>
                 </div>
-<<<<<<< HEAD
             <!-- </form> -->
-=======
-              </form>
->>>>>>> likes
               <div class="comment_new">
                 <div class="">
 
-                  <h3>전체 댓글</h3>
+                <h3>전체 댓글</h3>
                 </div>
-<<<<<<< HEAD
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -161,34 +142,20 @@
                      <tr>
                         <td>{{$comments['u_no']}}</td>
                         <td>{{$comments['c_comments']}}</td>
-                        @if($comments->u_no==Auth::user()->id)<td>
+                      @if(!Auth::user())
+                        <td></td>
+                        @elseif($comments->u_no==Auth::user()->id)
+                            <td>
                             <form action="delete/{{$comments->c_no}}"  method="POST">
                             @csrf
                                 <button type="submit"  class="btn btn-sm btn-primary" id="btn_comment_delete" name="remove" id="removes" value="삭제">삭제</button>
-                              </form>
+                              </form>  
                             </td>
                      @endif
                 @endforeach
             </form>
             </tbody>
         </table>
-=======
-                @foreach ($comment as $key => $comments)
-                  <div class="create_comment">
-                    <div class="neadcomt">
-                      <div class="comment_naeyoung">
-                        <div class="comment_people">
-
-                          {{$comments['u_no']}}
-                        </div>
-                        <div class="value_comment">
-                          <p> {{$comments['c_comments']}}</p>
-                        </div>
-                    </div>
-                  </div>
-                @endforeach
-              </div>
->>>>>>> likes
             </div>
           </div>
 
@@ -221,14 +188,13 @@
                 custom_update();
             });
 
-        $(document).on("click", "#btn_comment_delete", function () {
-            comment_delete();
-        });
+        // $(document).on("click", "#btn_comment_delete", function () {
+        //     comment_delete();
+        // });
 
         $(document).ready(function(){
             $("#likebtn").click(likedata);
         });
-<<<<<<< HEAD
 
         
 
@@ -284,66 +250,6 @@
         'c_comments': $("#c_comments").val(),
         'w_no' : w_no},
          dataType : 'json',
-=======
-        function likedata(){
-            $.ajax({
-                url:'/product/like/{no}',
-                type: 'post',
-                dataType: 'json',
-                data: {"likevalue": $("#likebtn").val()},
-                
-                success: function(data, statusText, jqXHR){
-
-        var w_no = {{$products->no}};
-
-
-        $(document).on("click", "#btn_custom_update", function () {
-                custom_update();
-            });
-
-    function custom_update() {
-        var req = $("#frm_custom").serialize();
-        $.ajax({
-            headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: '/comment/update',
-            type: 'POST',
-            async: true,
-            beforeSend: function (xhr) {
-                $("#customDetail_msg").html("");
-            },
-            data: req,
-            success: function (res, textStatus, xhr) {
-                if (res.result == true) {
-                    document.location.reload();
-                } else {
-                    $("#customDetail_msg").html(res.message);
-                    console.log(xhr);
-                    console.log(textStatus);
-                    console.log(errorThrown);
-                }
-            },
-            error: function (xhr, textStatus, errorThrown) {
-                console.log(xhr);
-                console.log(textStatus);
-                console.log(errorThrown);
-            }
-        });
-}
-
-
-function likedata(){
-  $.ajax({
-    type : 'POST',
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-    url : 'test',
-    async : true,
-   
-         dataType : 'json',
-         data : {"likevalue" : $("#likebtn").val(),
-        "w_no" : w_no},
->>>>>>> likes
          success: function(data, statusText, jqXHR){
                     console.log("성공")
                     console.log(data); //응답 body부 데이터
@@ -358,7 +264,7 @@ function likedata(){
                     console.log("실패"); //변경사항
                  }
             })
-            location.reload();
+             location.reload();
     }
 
 

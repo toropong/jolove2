@@ -573,11 +573,7 @@ class ComposerStaticInit8ab459e947547c18db69b91da34ed3bd
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-<<<<<<< HEAD
         'App\\Models\\Comments' => __DIR__ . '/../..' . '/app/Models/Comments.php',
-=======
-        'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment.php',
->>>>>>> parent of dbe650fa (구글 애널리틱스)
         'App\\Models\\Customer' => __DIR__ . '/../..' . '/app/Models/Customer.php',
         'App\\Models\\Likes' => __DIR__ . '/../..' . '/app/Models/Likes.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

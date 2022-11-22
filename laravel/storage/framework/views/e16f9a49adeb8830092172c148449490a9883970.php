@@ -124,7 +124,7 @@
               <div class="comment_new">
                 <div class="">
 
-                  <h3>전체 댓글</h3>
+                <h3>전체 댓글</h3>
                 </div>
                 <table class="table table-striped">
                     <thead>
@@ -140,11 +140,14 @@
                      <tr>
                         <td><?php echo e($comments['u_no']); ?></td>
                         <td><?php echo e($comments['c_comments']); ?></td>
-                        <?php if($comments->u_no==Auth::user()->id): ?><td>
+                      <?php if(!Auth::user()): ?>
+                        <td></td>
+                        <?php elseif($comments->u_no==Auth::user()->id): ?>
+                            <td>
                             <form action="delete/<?php echo e($comments->c_no); ?>"  method="POST">
                             <?php echo csrf_field(); ?>
                                 <button type="submit"  class="btn btn-sm btn-primary" id="btn_comment_delete" name="remove" id="removes" value="삭제">삭제</button>
-                              </form>
+                              </form>  
                             </td>
                      <?php endif; ?>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -183,9 +186,9 @@
                 custom_update();
             });
 
-        $(document).on("click", "#btn_comment_delete", function () {
-            comment_delete();
-        });
+        // $(document).on("click", "#btn_comment_delete", function () {
+        //     comment_delete();
+        // });
 
         $(document).ready(function(){
             $("#likebtn").click(likedata);
@@ -259,7 +262,7 @@
                     console.log("실패"); //변경사항
                  }
             })
-            location.reload();
+             location.reload();
     }
 
 

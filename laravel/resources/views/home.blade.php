@@ -58,7 +58,7 @@
                             <div class="textForm">
                                 회원가입이 완료되었습니다.
                             </div>
-                            <button class="w-btn w-btn-indigo" href="/" type="button">
+                            <button class="w-btn w-btn-indigo" type="button" onclick = "location.href = '/' " >
                                 홈으로 이동
                             </button>
                         
