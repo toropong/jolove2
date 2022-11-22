@@ -18,13 +18,6 @@ use Session;
 
 class WorkController extends Controller
 {
-<<<<<<< HEAD
-=======
-    // public function __construct()
-    // {
-    //     $this->works = new Works();
-    // }
->>>>>>> likes
     /**
      * Handle the incoming request.
      *
