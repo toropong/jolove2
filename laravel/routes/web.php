@@ -44,11 +44,13 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/findid', function () {
-    return view('findid');
+Route::get('/findpw', function () {
+    return view('findpw');
 });
 
 Route::post('/find',[WorkController::class, 'find_id']);
+
+Route::post('/findpw',[WorkController::class, 'find_pw']);
 
 Route::post('/image', 'WorkController@store');
 
@@ -59,6 +61,8 @@ Route::get('/tables', 'ManagerController@tables');
 Route::post('/remove/{id}', 'ManagerController@remove');
 
 Route::post('/w_remove/{id}', 'ManagerController@w_remove');
+
+
 
 
 //  Route::get('register', [RegisterController::class, 'index']) -> name('register');

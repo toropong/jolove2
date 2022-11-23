@@ -6,12 +6,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="/">홈</a></li>
-                <li class="nav-item"><a class="nav-link" href="index">작품 소개</a></li>
+                <li class="nav-item"><a class="nav-link" href="/index">작품 소개</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">작품 리스트</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                         @foreach (App\Models\Works::getYears() as $year)
-                        <li><a class="dropdown-item" href="index/{{$year}}">{{ $year }} 학년도</a></li>
+                        <li><a class="dropdown-item" href="/index/{{$year}}">{{ $year }} 학년도</a></li>
 @endforeach
                                             </ul>
                                         </li>

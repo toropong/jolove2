@@ -7,20 +7,36 @@ use App\Models\Works;
 use App\Models\Likes;
 use App\Models\Comments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Analytics\Period;
 use Carbon\Carbon;
+use Analytics;
 use Session;
 
 class ManagerController extends Controller
 {
+  
     function manage(Request $request){
+
+        $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+
+        $level = Auth::user()->level;
+        if($level==2){
         $data["manage"] = [];
         $data["manage"] = DB::table('users')->select('*')->get();
+
+        dd( $analyticsData);
+
        return view('manage/manage', $data);
+        }
+        else{
+            echo"<script>alert('권한이 없습니다.'); history.back();</script>";
+        }
     }
 
     function tables(Request $request){

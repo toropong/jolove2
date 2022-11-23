@@ -255,6 +255,7 @@
                     console.log(data); //응답 body부 데이터
                        console.log(statusText); //"succes"로 고정인듯함
                        console.log(jqXHR);
+                       location.reload();
                 },
                 
                 error: function(jqXHR, textStatus, errorThrown){
@@ -262,9 +263,10 @@
                        console.log(textStatus); //"error"로 고정인듯함
                        console.log(errorThrown);
                     console.log("실패"); //변경사항
+                    location.reload();
                  }
             })
-             location.reload();
+             
     }
 
 
