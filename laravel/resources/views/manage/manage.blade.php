@@ -105,7 +105,6 @@
                                             <th>전화번호</th>
                                             <th>id</th>
                                             <th>가입일</th>
-                                            <th>조회</th>
                                         </tr>
                                     </thead>
 
@@ -117,7 +116,6 @@
                                             <td>{{$manages->c_num}}</td>
                                             <td>{{$manages->userid}}</td>
                                             <td>{{$manages->created_at}}</td>
-                                            <th>{{$analyticsData}}</th>
                                             <td>
                                                 <form name="delete" action="remove/{{$manages->id}}" method="post">
                                                   @csrf
