@@ -19,33 +19,40 @@
         @include('layouts.navigation')
         <!-- Page Content-->
         <section class="py-5">
-        <div class="container px-4 px-lg-5" style="width: 100%; height:100%;">
-            <h2 class="title-image" style="margin-top: 1rem;">대표이미지</h2>
-            <div class="row gx-4 gx-lg-5 align-items-center my-5" style="width: 100%">
-                @if(isset($product))
+        <div class="container px-4 px-lg-5" style="width: 100%; height:100%; margin:0;">
+            @if(isset($product))
             @foreach($product as $products)
+            <h2 class="title-image" style="margin-top: 1rem;">작품명 : {{$products['title']}}</h2>
+           
+            <p>대표이미지</p>
+            <div class="row gx-4 gx-lg-5 align-items-center " style="width: 100%">
+           
                 
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="\storage\app\public\{{$products['filename']}}" width="200" height="200" style="border-style: solid" onerror="this.style.display='none'" /></div>
-                <div class="col-lg-5">
-                    <h1 class="font-weight-light"></h1>
-                    <p>{{$products['title']}}</p>
-                    <a class="btn btn-primary" href="#!">소스코드 보기</a>
+                <div class="col-lg-7" style="width: 30%;"><img class="img-fluid rounded mb-4 mb-lg-0" src="/imglib/{{$products['filename']}}" width="200" height="200" style="border-style: solid" onerror="this.style.display='none'" /></div>
+                <div class="col-lg-5" style="width: 200px; height:200px; border:1px solid;">
+                    <p>{{$products['cont']}}</p>
                 </div>
             </div>
             @endforeach
-            @auth
+            @if ( isset ( Auth::user()->id) ) 
+            {{-- @auth --}}
             <th>좋아요</th>
-<td> <input id="likebtn" type="button" value="♥" /></td>
+            @if($likes2==1)
+<td> <input id="likebtn" type="button" value="♥" /><input id = "count"  style="pointer-events: none" value="{{$likes}}"></td>
+            @else
+                <td> <input id="likebtn" type="button" value="♡" /><input id = "count"  style="pointer-events: none" value="{{$likes}}"></td>
+            @endif
             @else
             <th>좋아요</th>
-            <td> <input type="button" value="♥" style="pointer-events: none"/> </td> 
-            @endif 
+            <td> <input type="button" value="♥" style="pointer-events: none"/><input id = "count" value="{{$likes}}"></td> 
             @endif
+            @endif 
+           
             
 
     
                <div class="view isk">
-                    <img src="/img/eye.png" width="16" height="16" alt="조회수">
+                <ion-icon name="eye-outline" size="medium"></ion-icon>조회수
                     <div class="see_num intf" name="">
                      @if ($products['visit_count'] !=0)
                         <span>{{$products['visit_count']}}</span>
@@ -68,10 +75,9 @@
                         <div class="card-body">
                             <h2 class="card-title">이미지 2</h2>
                             @foreach($product as $products)
-                           <img class="img-fluid rounded mb-4 mb-lg-0" src= "\storage\app\public\{{$products['subimage_1']}}" width="200" height="200" onerror="this.style.display='none'" />
+                           <img class="img-fluid rounded mb-4 mb-lg-0" src= "/imglib/{{$products['subimage_1']}}" width="200" height="200" onerror="this.style.display='none'" />
                         @endforeach
                         </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">보러가기</a></div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
@@ -79,10 +85,10 @@
                         <div class="card-body">
                             <h2 class="card-title">이미지 3</h2>
                             @foreach($product as $products)
-                            <img class="img-fluid rounded mb-4 mb-lg-0" src= "\storage\app\public\{{$products['subimage_2']}}" width="200" height="200"onerror="this.style.display='none'"/>
+                            <img class="img-fluid rounded mb-4 mb-lg-0" src= "/imglib/{{$products['subimage_2']}}" width="200" height="200"onerror="this.style.display='none'"/>
                             @endforeach
                         </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">보러가기</a></div>
+
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
@@ -90,10 +96,9 @@
                         <div class="card-body">
                             <h2 class="card-title">이미지 4</h2>
                             @foreach($product as $products)
-                            <img class="img-fluid rounded mb-4 mb-lg-0"src= "\storage\app\public\{{$products['subimage_3']}}" width="200" height="200" onerror="this.style.display='none'"/>
+                            <img class="img-fluid rounded mb-4 mb-lg-0"src= "/imglib/{{$products['subimage_3']}}" width="200" height="200" onerror="this.style.display='none'"/>
                             @endforeach
                         </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">보러가기</a></div>
                     </div>
                 </div>
             </div>
@@ -104,42 +109,53 @@
             <div class="dat_lab">
               <h2>댓글</h2>
             </div>
-            <form class="form-horizontal" role="form" name="frm_custom" id="frm_custom">
-            {{csrf_field()}}
-            @foreach($comment as $comments)
-              <input type="hidden" name="no" id="no" value="{{ $comments['w_no'] }}">
-            @endforeach
+
+            <!-- <form class="form-horizontal" action="/product/update" method="POST"  role="form" name="frm_custom" id="frm_custom"  enctype="multipart/form-data"> -->
+                <!-- {{csrf_field()}} -->
               <div class="combox">
                 <div class="comcontent">
                   <div class="comment_munie">
-                    <textarea class="comment_text" name="c_comments" id="comment_texts" rows="8" cols="80" placeholder="댓글 내용 입력" required></textarea>
+                    <textarea  name="c_comments" id="c_comments" value="" rows="8" cols="80" placeholder="댓글 내용 입력" required> </textarea>
                   </div>
-                  <div class="col-xs-12 mt-3 text-center">
+                    <div class="col-xs-12 mt-3 text-center">
                         <button type="button" class="btn btn-sm btn-primary" id="btn_custom_update">글작성</button>
                     </div>
                 </div>
                 </div>
-              </form>
+            <!-- </form> -->
               <div class="comment_new">
                 <div class="">
 
-                  <h3>전체 댓글</h3>
+                <h3>전체 댓글</h3>
                 </div>
-                @foreach ($comment as $key => $comments)
-                  <div class="create_comment">
-                    <div class="neadcomt">
-                      <div class="comment_naeyoung">
-                        <div class="comment_people">
-
-                          {{$comments['u_no']}}
-                        </div>
-                        <div class="value_comment">
-                          <p> {{$comments['c_comments']}}</p>
-                        </div>
-                    </div>
-                  </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>작성자번호</th>
+                            <th>댓글내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            @foreach ($comment as $comments)
+                           
+                     <tr>
+                        <td>{{$comments['u_no']}}</td>
+                        <td>{{$comments['c_comments']}}</td>
+                      @if(!Auth::user())
+                        <td></td>
+                        @elseif($comments->u_no==Auth::user()->id)
+                            <td>
+                            <form action="delete/{{$comments->c_no}}"  method="POST">
+                            @csrf
+                                <button type="submit"  class="btn btn-sm btn-primary" id="btn_comment_delete" name="remove" id="removes" value="삭제">삭제</button>
+                              </form>  
+                            </td>
+                     @endif
                 @endforeach
-              </div>
+            </form>
+            </tbody>
+        </table>
             </div>
           </div>
 
@@ -162,95 +178,129 @@
             </div>
         </footer>
         
-                
-    <script>
-  
-        $(document).ready(function(){
-            $("#likebtn").click(likedata);
-            console.log("이거까진됨");
-        });
-        function likedata(){
-            $.ajax({
-                url:'/product/like/{no}',
-                type: 'post',
-                dataType: 'json',
-                data: {"likevalue": $("#likebtn").val()},
-                
-                success: function(data, statusText, jqXHR){
 
-        var w_no = {{$products->no}};
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script type="text/javascript">
 
-
+       
         $(document).on("click", "#btn_custom_update", function () {
                 custom_update();
             });
 
-    function custom_update() {
-        var req = $("#frm_custom").serialize();
-        $.ajax({
-            headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: '/comment/update',
-            type: 'POST',
-            async: true,
-            beforeSend: function (xhr) {
-                $("#customDetail_msg").html("");
-            },
-            data: req,
-            success: function (res, textStatus, xhr) {
-                if (res.result == true) {
-                    document.location.reload();
-                } else {
-                    $("#customDetail_msg").html(res.message);
-                    console.log(xhr);
-                    console.log(textStatus);
-                    console.log(errorThrown);
-                }
-            },
-            error: function (xhr, textStatus, errorThrown) {
-                console.log(xhr);
-                console.log(textStatus);
-                console.log(errorThrown);
-            }
+        // $(document).on("click", "#btn_comment_delete", function () {
+        //     comment_delete();
+        // });
+
+        $(document).ready(function(){
+            $("#likebtn").click(likedata);
         });
+
+        
+
+        var w_no = {{$products->no}};
+        var c_comments = $("#c_comments").val();
+
+
+    function likedata(){
+    $.ajax({
+        type : 'POST',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        url : 'test',
+        async : true,
+    
+            dataType : 'json',
+            data : {"likevalue" : $("#likebtn").val(), 
+            "w_no" : w_no},
+            success: function(data, statusText, jqXHR){
+                        console.log("성공")
+                        console.log(data); //응답 body부 데이터
+                        console.log(statusText); //"succes"로 고정인듯함
+                        console.log(jqXHR);
+                            if(data['a']=="1"){
+                                $("#likebtn").attr("value","♥");
+                                $("#count").attr("value",data['b']);
+                            }
+                            else{
+                                $("#likebtn").attr("value","♡");
+                                $("#count").attr("value",data['b']);
+                            }
+                           
+                            
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        console.log(jqXHR);  //응답 메시지
+                        console.log(textStatus); //"error"로 고정인듯함
+                        console.log(errorThrown);
+                        console.log("실패");
+                    }
+                })
 }
 
+    function custom_update() {
 
-function likedata(){
-  $.ajax({
+    $.ajax({
     type : 'POST',
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-    url : 'test',
+    url : 'update', 
     async : true,
-   
+    data: {
+        'c_comments': $("#c_comments").val(),
+        'w_no' : w_no},
          dataType : 'json',
-         data : {"likevalue" : $("#likebtn").val(),
-        "w_no" : w_no},
          success: function(data, statusText, jqXHR){
                     console.log("성공")
                     console.log(data); //응답 body부 데이터
-                    	console.log(statusText); //"succes"로 고정인듯함
-                    	console.log(jqXHR);
-                        
+                       console.log(statusText); //"succes"로 고정인듯함
+                       console.log(jqXHR);
+                       location.reload();
                 },
+                
                 error: function(jqXHR, textStatus, errorThrown){
                     console.log(jqXHR);  //응답 메시지
-                    	console.log(textStatus); //"error"로 고정인듯함
-                    	console.log(errorThrown);
-                    console.log("실패");
-                }
+                       console.log(textStatus); //"error"로 고정인듯함
+                       console.log(errorThrown);
+                    console.log("실패"); //변경사항
+                    location.reload();
+                 }
             })
-        }
-        $.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
-});
-    </script>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        {{-- <script src="/js/scripts.js"></script> --}}
-    </body>
+             
+    }
+
+
+    function comment_delete() {
+    $.ajax({
+    type : 'POST',
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    url : 'delete', 
+    async : true,
+    data: {
+        'c_no': $('#c_no').val(),
+        'w_no' : w_no},
+    dataType : 'json',
+    success: function(data, statusText, jqXHR){
+                console.log("성공")
+                console.log(data); //응답 body부 데이터
+                console.log(statusText); //"succes"로 고정인듯함
+                console.log(jqXHR);
+            
+                 if(data==1){
+                    alert('삭제되었습니다.'); location.reload();
+                }
+            },
+            
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log(jqXHR);  //응답 메시지
+                console.log(textStatus); //"error"로 고정인듯함
+                console.log(errorThrown);
+                console.log("실패");
+            }
+        })
+    }
+
+</script>
+
 </html>

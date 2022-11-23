@@ -114,8 +114,9 @@
 
 
     <div class="c">
-           <input type="text" name="year" />학년도          
+           <input id="year" type="text" name="year" />학년도          
     </div>
+    <div class="year_blank" id="year_blank"></div>
     {{-- <div class="postbutton">
         <input type="submit" name="" value="저장" id="save" onclick="save_check()">
         <input type="hidden" value=""  id="close"  >
@@ -189,6 +190,9 @@
                                 var content = $('#cont');
                                 var title_cont = title.val();
                                 var content_cont = content.val();
+                                var year = $('year');
+                                var year_cont = year.val();
+                                
                         
                                 if (title_cont == "") {
                                     $('#title_blank')
@@ -205,6 +209,16 @@
                                     return false;
                                 
                             }
+                            if (year_cont == "") {
+                                    $('#year_blank')
+                                        .text("년도를 입력해주세요.")
+                                        .css('color', 'red');
+                                    content_cont.focus();
+                                    return false;
+                                
+                            }
+                           
+
                           }
                           function change(fl) {
                               if (fl.files && fl.files[0]) {

@@ -10,4 +10,8 @@ class LoginController extends Controller
     public function login(){
         return view('login');
     }
+    public function update(){
+        $password = $request->input('password');
+        DB::table('users')->update(['password'=>$password]);
+    }
 }

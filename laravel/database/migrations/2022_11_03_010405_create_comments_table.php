@@ -16,13 +16,14 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id('c_no')->comment('댓글');
 
-            $table->text('c_comments')->default('')->comment('댓글내용');
-            
-            $table->unsignedBigInteger('u_no');
-            $table->foreign('u_no')->references('id')->on('users');
+            $table->string('c_comments')->default('')->comment('댓글내용');
 
-            $table->unsignedBigInteger('w_no');
-            $table->foreign('w_no')->references('no')->on('works');
+            $table->unsignedBigInteger('u_no')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('u_no')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->unsignedBigInteger('w_no')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('w_no')->references('no')->on('works')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
             $table->SoftDeletes();
         });
@@ -35,6 +36,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comment');
+        Schema::dropIfExists('comments');
     }
 }

@@ -5,6 +5,7 @@ body {
   
 
 .login-box {
+    margin-top: 50px;
     position:absolute;
     width:400px;
     height:400px;

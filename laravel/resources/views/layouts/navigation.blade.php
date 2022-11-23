@@ -1,16 +1,18 @@
 {{-- <link href="/css/image.css" rel="stylesheet" /> --}}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container px-5">
-        <a class="navbar-brand" href="">중부대학교 졸업 작품</a>
+        <a class="navbar-brand" href="/">중부대학교 졸업 작품</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="/">홈</a></li>
-                <li class="nav-item"><a class="nav-link" href="index">작품 소개</a></li>
+                <li class="nav-item"><a class="nav-link" href="/index">작품 소개</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">작품 리스트</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item" href=""> 학년도</a></li>
+                        @foreach (App\Models\Works::getYears() as $year)
+                        <li><a class="dropdown-item" href="/index/{{$year}}">{{ $year }} 학년도</a></li>
+@endforeach
                                             </ul>
                                         </li>
                                         @auth
@@ -35,7 +37,7 @@
                         <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
                         <script type="text/javascript">
                         function showPopup() {
-  var url="image_popup";
+  var url="/image_popup";
   var option="width=700, height=300, top=200"
   window.open(url, "", option);
 }

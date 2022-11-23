@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) -->
+
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K4L5KXL5P3"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -16,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>중부대학교 졸업 작품 공유 사이트</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
@@ -30,7 +31,7 @@
         <!-- Navigation--> 
 @include('layouts.navigation')
         <!-- Header-->
-        <header class="bg-dark py-5">
+        <header class="bg-dark ">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center justify-content-center">
                     <div class="col-lg-8 col-xl-7 col-xxl-6">
@@ -69,7 +70,7 @@
                             <div class="col mb-5 mb-md-0 h-100">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
                                 <h2 class="h5">개최 일시</h2>
-                                <p class="mb-0">2022.00.00(월) - 2022.00.00(수)</p>
+                                <p class="mb-0">2022.11.30(수) - 2022.12.02(금)</p>
                             </div>
                             <div class="col h-100">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>

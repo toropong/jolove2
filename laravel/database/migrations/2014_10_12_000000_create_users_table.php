@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->comment('이메일')->default('');
             $table->string('password')->comment('비밀번호')->default('');
             $table->string('c_num')->comment('전화번호')->default('');
+            $table->string('level')->comment('등급')->default('1');
             $table->rememberToken();
             $table->timestamps();
         });

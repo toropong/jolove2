@@ -29,11 +29,7 @@ return array(
     'App\\Http\\Middleware\\TrustHosts' => $baseDir . '/app/Http/Middleware/TrustHosts.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
-<<<<<<< Updated upstream
-    'App\\Models\\Comment' => $baseDir . '/app/Models/Comment.php',
-=======
     'App\\Models\\Comments' => $baseDir . '/app/Models/Comments.php',
->>>>>>> Stashed changes
     'App\\Models\\Customer' => $baseDir . '/app/Models/Customer.php',
     'App\\Models\\Likes' => $baseDir . '/app/Models/Likes.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

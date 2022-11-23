@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -6,40 +6,22 @@
     <title>log in</title>
 
     <link href="css/login.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 </head>
-@section('content')
-{{-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card"> --}}
-                {{-- <div class="card-header">{{ __('Login') }}</div> --}}
-                <div class="login-container">
+<body>
+    @include('layouts.navigation')
                 <div class="login-box">
                     <form method="POST" class="login-form" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="row mb-3">
                             <h1 class="logo">LogIn</h1>
-                            {{-- <label for="userid" class="col-md-4 col-form-label text-md-end">{{ __('userid') }}</label> --}}
-
                             <div class="textForm">
                                 <input id="userid" type="text" class="form-control @error('userid') is-invalid @enderror" name="userid" value="{{ old('userid') }}" required autocomplete="userid" autofocus placeholder="아이디">
-
-                                {{-- @error('userid')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror --}}
                             </div>
-                        </div>
+                    
                             <div class="textForm">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="비밀번호">
-                                {{-- @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror --}}
                             </div>
                         
                                 <button type="submit" class="login_bt" value="로그인">
@@ -53,15 +35,23 @@
                                     </label>
                                 </div>
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                    <a class="btn btn-link" href="findid">
+                                        아이디 /
+                                    </a>
+                                    <a class="btn btn-link" href=findpw>
+                                        비밀번호 찾기 /
+                                    </a>
+                                    <a class="btn btn-link" href=register>
+                                         회원가입
                                     </a>
                                 @endif
                     </form>
                 </div>
-                </div>
+
+</body>
+</html>
             {{-- </div>
         </div>
     </div>
 </div> --}}
-@endsection
+{{-- @endsection --}}
