@@ -20,7 +20,7 @@
 </head>
 <body>
   @include('layouts.navigation')
-  <section class="py-5">
+  <section class="py-5" style="100%">
     <div class="hr-sect">
       검색 결과
     </div>
@@ -41,7 +41,7 @@
               <div class="big-container" style="width: 20%; height: 20%; border:1px solid;  margin:2%; border-radius:3px; display:inline-block ">
                   <div class="image-container" style="width: 100%; height:100%; display: inline-block  ">
                       <div class="image-small" style="width: 100%; height:100%; display:inline-block; position:relative">
-                  <img src="\storage\app\public\{{$searchlist->filename}}" style="width:100%; height:100%; object-fit: cover;" >
+                  <img src="/imglib/{{$searchlist->filename}}" style="width:100%; height:100%; object-fit: cover;" >
                   </div>    
                   </div>
                   <div class="medium-container">
@@ -51,12 +51,10 @@
                       </div>
                       <div class="small-container">
                           <div class="text-center">
-                              <a class="btn btn-outline-dark mt-auto" href="/public/product/{{$searchlist->no}}" >
+                          <a class="btn btn-outline-dark mt-auto" href="/product/{{$searchlist->no}}" >
                                   작품 보기
                               </a>
-                              @auth
-                              <a class="btn btn-outline-dark mt-auto" href="">작품 삭제</a>
-                              @endauth
+                              
                           </div>
                       </div>
                   </div>
