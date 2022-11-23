@@ -20,7 +20,7 @@ class CreateCommentsTable extends Migration
 
             $table->unsignedBigInteger('u_no')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('u_no')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-
+//주석
             $table->unsignedBigInteger('w_no')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('w_no')->references('no')->on('works')->onDelete('cascade')->onUpdate('cascade');
 
