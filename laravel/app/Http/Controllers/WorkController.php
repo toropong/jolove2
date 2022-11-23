@@ -27,6 +27,7 @@ class WorkController extends Controller
 
     public $user;
 
+    //
     public function __construct()
     {
         $this->works = new Works();
