@@ -30,9 +30,7 @@ class ManagerController extends Controller
         $data["manage"] = [];
         $data["manage"] = DB::table('users')->select('*')->get();
 
-        dd( $analyticsData);
-
-       return view('manage/manage', $data);
+       return view('manage/manage', $data, $analyticsData);
         }
         else{
             echo"<script>alert('권한이 없습니다.'); history.back();</script>";

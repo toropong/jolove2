@@ -93,6 +93,9 @@
                                 <i class="fas fa-table me-1"></i>
                                 DataTable Example
                             </div>
+                            <div>
+                            <td>{{$analyticsData}}</td>
+                            </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
@@ -104,18 +107,7 @@
                                             <th>가입일</th>
                                         </tr>
                                     </thead>
-                                    {{-- <tfoot>
-                                       
-                                        <tr>
-                                            <th></th>
-                                           
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot> --}}
+
                                     <tbody>
                                         @foreach($manage as $manages)
                                         <tr>
