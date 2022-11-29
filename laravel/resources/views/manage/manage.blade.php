@@ -94,7 +94,7 @@
                                 DataTable Example
                             </div>
                             <div>
-                            <td>{{$analyticsData}}</td>
+                            <td>{{$analytics}}</td>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">

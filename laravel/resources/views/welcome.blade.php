@@ -4,14 +4,15 @@
 <head>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-K4L5KXL5P3"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171253102-2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-K4L5KXL5P3');
+  gtag('config', 'UA-171253102-2');
 </script>
+
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />

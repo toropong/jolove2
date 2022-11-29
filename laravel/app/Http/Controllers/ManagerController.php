@@ -23,18 +23,20 @@ class ManagerController extends Controller
   
     function manage(Request $request){
 
-        $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+      $data["analytics"] = Analytics::fetchVisitorsAndPageViews(Period::days(0));
 
-        $level = Auth::user()->level;
-        if($level==2){
+     //   $level = Auth::user()->level;
+     //   if($level==2){
         $data["manage"] = [];
         $data["manage"] = DB::table('users')->select('*')->get();
+        
+      //  dd($analytics);
 
-       return view('manage/manage', $data, $analyticsData);
-        }
-        else{
-            echo"<script>alert('권한이 없습니다.'); history.back();</script>";
-        }
+       return view('manage/manage', $data);
+     //   }
+     //   else{
+     //       echo"<script>alert('권한이 없습니다.'); history.back();</script>";
+     //   }
     }
 
     function tables(Request $request){
