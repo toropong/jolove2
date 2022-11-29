@@ -113,7 +113,11 @@
               <div class="combox">
                 <div class="comcontent">
                   <div class="comment_munie">
+                  <?php if(Auth::user()): ?>
                     <textarea  name="c_comments" id="c_comments" value="" rows="8" cols="80" placeholder="댓글 내용 입력" required> </textarea>
+                    <?php else: ?>
+                    <textarea  name="c_comments" id="c_comments" value="" rows="8" cols="80" placeholder="댓글 내용 입력" readonly> </textarea>
+                    <?php endif; ?>
                   </div>
                     <div class="col-xs-12 mt-3 text-center">
                         <button type="button" class="btn btn-sm btn-primary" id="btn_custom_update">글작성</button>
@@ -129,7 +133,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>작성자번호</th>
+                            <th>작성자아이디</th>
                             <th>댓글내용</th>
                         </tr>
                     </thead>
@@ -138,7 +142,7 @@
                             <?php $__currentLoopData = $comment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comments): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                            
                      <tr>
-                        <td><?php echo e($comments['u_no']); ?></td>
+                        <td><?php echo e($comments['userid']); ?></td>
                         <td><?php echo e($comments['c_comments']); ?></td>
                       <?php if(!Auth::user()): ?>
                         <td></td>
@@ -253,6 +257,7 @@
                     console.log(data); //응답 body부 데이터
                        console.log(statusText); //"succes"로 고정인듯함
                        console.log(jqXHR);
+                       location.reload();
                 },
                 
                 error: function(jqXHR, textStatus, errorThrown){
@@ -260,9 +265,10 @@
                        console.log(textStatus); //"error"로 고정인듯함
                        console.log(errorThrown);
                     console.log("실패"); //변경사항
+                    location.reload();
                  }
             })
-             location.reload();
+             
     }
 
 
