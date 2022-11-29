@@ -157,8 +157,9 @@ class WorkController extends Controller
 
          #댓글
          $data["comment"]=[];
-         $data["comment"]= \App\Models\Comments::select("comments.u_no","comments.c_comments","comments.c_no")
+         $data["comment"]= \App\Models\Comments::select("users.userid","comments.c_comments","comments.c_no")
          ->leftjoin('works', 'works.no', '=', 'comments.w_no')
+         ->leftjoin('users','users.id','=','comments.u_no')
          ->where(function ($query) use ($request) {
            if($request->no) {
                   $query->where("no", $request->no);

@@ -48,6 +48,10 @@ Route::get('/findpw', function () {
     return view('findpw');
 });
 
+Route::get('/findid', function () {
+    return view('findid');
+});
+
 Route::post('/find',[WorkController::class, 'find_id']);
 
 Route::post('/findpw',[WorkController::class, 'find_pw']);

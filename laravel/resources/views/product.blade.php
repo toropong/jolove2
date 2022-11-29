@@ -115,7 +115,11 @@
               <div class="combox">
                 <div class="comcontent">
                   <div class="comment_munie">
+                  @if(Auth::user())
                     <textarea  name="c_comments" id="c_comments" value="" rows="8" cols="80" placeholder="댓글 내용 입력" required> </textarea>
+                  @else
+                    <textarea  name="c_comments" id="c_comments" value="" rows="8" cols="80" placeholder="댓글 내용 입력" readonly> </textarea>
+                  @endif
                   </div>
                     <div class="col-xs-12 mt-3 text-center">
                         <button type="button" class="btn btn-sm btn-primary" id="btn_custom_update">글작성</button>
@@ -131,7 +135,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>작성자번호</th>
+                            <th>작성자아이디</th>
                             <th>댓글내용</th>
                         </tr>
                     </thead>
@@ -140,7 +144,7 @@
                             @foreach ($comment as $comments)
                            
                      <tr>
-                        <td>{{$comments['u_no']}}</td>
+                        <td>{{$comments['userid']}}</td>
                         <td>{{$comments['c_comments']}}</td>
                       @if(!Auth::user())
                         <td></td>
