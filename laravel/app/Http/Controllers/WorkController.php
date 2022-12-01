@@ -104,7 +104,7 @@ class WorkController extends Controller
             if ($request->year) {
                     $query->where("year", $request->year);
             }
-        })-> orderby("visit_count", "desc")->simplepaginate(4);
+        })-> orderby("visit_count", "desc")->simplepaginate(8);
         return view('index', $data);
     }
 
@@ -267,7 +267,7 @@ class WorkController extends Controller
   public function all(Request $request){
     $data["lists"] = [];
     $data["lists"]= \App\Models\Works::select('*')
-    -> orderby("visit_count", "desc")->simplepaginate(4);
+    -> orderby("visit_count", "desc")->simplepaginate(8);
     return view('index', $data);
   }
 

@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="small-container">
-                                <div class="text-center">
+                                <div class="text-center" style="padding: 10px;">
                                     <a class="btn btn-outline-dark mt-auto" href="/product/{{$list['no']}}" >
                                         작품 보기
                                     </a>
