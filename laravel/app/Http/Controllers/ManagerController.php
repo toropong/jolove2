@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Analytics\Period;
+use Illuminate\Support\Arr;
 use Carbon\Carbon;
 use Analytics;
 use Session;
@@ -23,7 +24,20 @@ class ManagerController extends Controller
   
     function manage(Request $request){
 
-      $data["analytics"] = Analytics::fetchVisitorsAndPageViews(Period::days(0));
+      $data = Analytics::fetchTotalVisitorsAndPageViews(Period::days(29));
+       $dat=0;
+     for($i=0; $i<count($data); $i++){
+       $dat += Arr::get($data[$i], 'visitors');
+     }
+
+     $data2 = Analytics::fetchTotalVisitorsAndPageViews(Period::days(6));
+       $dat2=0;
+     for($i=0; $i<count($data2); $i++){
+       $dat2 += Arr::get($data2[$i], 'visitors');
+     }
+
+     $data1 = Analytics::fetchTotalVisitorsAndPageViews(Period::days(0));
+     $dat1 =Arr::get($data1[0], 'visitors');
 
      //   $level = Auth::user()->level;
      //   if($level==2){
@@ -32,7 +46,15 @@ class ManagerController extends Controller
         
       //  dd($analytics);
 
-       return view('manage/manage', $data);
+       return view('manage/manage', $data ,[
+        'data'=>$data,
+        'data1'=>$data1,
+        'dat'=>$dat,
+        'dat1'=>$dat1,
+        'dat2'=>$dat2,
+
+       ]);
+       
      //   }
      //   else{
      //       echo"<script>alert('권한이 없습니다.'); history.back();</script>";

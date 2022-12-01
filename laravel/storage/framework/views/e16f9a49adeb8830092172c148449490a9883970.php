@@ -115,9 +115,9 @@
                   <div class="comment_munie">
                   <?php if(Auth::user()): ?>
                     <textarea  name="c_comments" id="c_comments" value="" rows="8" cols="80" placeholder="댓글 내용 입력" required> </textarea>
-                    <?php else: ?>
+                  <?php else: ?>
                     <textarea  name="c_comments" id="c_comments" value="" rows="8" cols="80" placeholder="댓글 내용 입력" readonly> </textarea>
-                    <?php endif; ?>
+                  <?php endif; ?>
                   </div>
                     <div class="col-xs-12 mt-3 text-center">
                         <button type="button" class="btn btn-sm btn-primary" id="btn_custom_update">글작성</button>
