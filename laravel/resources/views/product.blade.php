@@ -25,10 +25,10 @@
             <h2 class="title-image" style="margin-top: 1rem;">작품명 : {{$products['title']}}</h2>
            
             <p>대표이미지</p>
-            <div class="row gx-4 gx-lg-5 align-items-center " style="width: 100%; padding:20px;">
+            <div class="row gx-4 gx-lg-5 align-items-center " style="width: 100%;  padding:20px;">
            
                 
-                <div class="col-lg-7" style="width: 30%;"><img class="img-fluid rounded mb-4 mb-lg-0" src="/imglib/{{$products['filename']}}" width="400" height="300" style="border-style: solid;" onerror="this.style.display='none'" /></div>
+                <div class="col-lg-7" style="width: 30%; height:200px;"><img class="img-fluid rounded mb-4 mb-lg-0" src="/imglib/{{$products['filename']}}" width="400" height="100%" style="border-style: solid;" onerror="this.style.display='none'" /></div>
                 <div class="col-lg-5" style="width: 200px; height:200px; border:1px solid;">
                     <p>{{$products['cont']}}</p>
                 </div>
