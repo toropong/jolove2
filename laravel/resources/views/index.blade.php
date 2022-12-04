@@ -51,7 +51,7 @@
                         </div>
                         <div class="medium-container">
                                 <div class="text-center">
-                                    <h5 class="fw-bolder">{{$list['title']}}</h5>
+                                    <div class="fw-bolder">{{$list['title']}}<div>
                                 </div>
                             </div>
                             <div class="small-container" style="margin-bottom: 10%">

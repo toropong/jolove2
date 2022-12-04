@@ -75,13 +75,11 @@ class ManagerController extends Controller
 
     function remove($id){
         DB::table('users')->where('id','=',$id)->delete();
-        echo "<script>alert('삭제되었습니다.');</script>";
-          return redirect('manage');
+        echo "<script>alert('삭제되었습니다.');location.href=document.referrer;</script>";
     }
 
     function w_remove($id){
         DB::table('works')->where('no','=',$id)->delete();
-          echo "<script>alert('삭제되었습니다.');</script>";
-        return redirect('manage');
+          echo "<script>alert('삭제되었습니다.'); location.href=document.referrer;</script>";
     }
 }
