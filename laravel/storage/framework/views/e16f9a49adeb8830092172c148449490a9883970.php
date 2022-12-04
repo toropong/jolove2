@@ -99,6 +99,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4 mb-5">
+                    <div class="card h-100" >
+                        <div class="card-body">
+                            <h2 class="card-title">시연영상</h2>
+                            <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <video src= "/imglib/<?php echo e($products['video']); ?>" width="700" height="400"  type="video/mp4" controls>
+                        </video>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </div>
+                    </div>
+                </div>
             </div>
             
 

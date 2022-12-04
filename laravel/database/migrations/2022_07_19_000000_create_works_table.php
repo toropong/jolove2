@@ -36,7 +36,9 @@ class CreateWorksTable extends Migration
             $table->string('subimage_3')
                 ->default('')
                 ->comment("서브이미지3");
-            
+                $table->string('video')
+                ->default('')
+                ->comment("시연영상");
             $table->unsignedInteger('p_like')->default(0)
                 ->comment("추천수");
             $table->unsignedInteger('visit_count')->default(0) 

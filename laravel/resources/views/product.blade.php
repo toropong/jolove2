@@ -101,6 +101,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4 mb-5">
+                    <div class="card h-100" >
+                        <div class="card-body">
+                            <h2 class="card-title">시연영상</h2>
+                            @foreach($product as $products)
+                            <video src= "/imglib/{{$products['video']}}" width="700" height="400"  type="video/mp4" controls>
+                        </video>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
             
 

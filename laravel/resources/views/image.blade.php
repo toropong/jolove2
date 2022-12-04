@@ -109,18 +109,15 @@
         </div>
    <div id="div-preview">
    </div>
-    {{-- <form method="POST" onsubmit="return false;" enctype="multipart/form-data"> --}}
-
-
+      <div class="sub-container2">
+        <label for="avatar">시연영상</label>
+          <input type="file"  multiple id="real-input" name="video" class="image_inputType_file"  accept="video/mp4,video/mkv, video/x-m4v,video/*">
+      </div>
 
     <div class="c">
            <input id="year" type="text" name="year" />학년도          
     </div>
     <div class="year_blank" id="year_blank"></div>
-    {{-- <div class="postbutton">
-        <input type="submit" name="" value="저장" id="save" onclick="save_check()">
-        <input type="hidden" value=""  id="close"  >
-      </div> --}}
 <div class="modal-footer">
 <button type="submit" class="btn btn-primary" name="" value="저장" id="save"onclick="save_check()">저장</button>
 <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" value="창닫기"  id="close"  onclick="window.close()">창닫기</button>
@@ -255,6 +252,7 @@
                                 reader.readAsDataURL(bl.files[0]);
                               }
                             }
+                        
                             
 
 /* 첨부파일 추가 */

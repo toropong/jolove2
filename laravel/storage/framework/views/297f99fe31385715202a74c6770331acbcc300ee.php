@@ -20,7 +20,7 @@
 </head>
 <body>
   <?php echo $__env->make('layouts.navigation', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-  <section class="py-5">
+  <section class="py-5" style="100%">
     <div class="hr-sect">
       검색 결과
     </div>
@@ -39,10 +39,10 @@
         <div>''에 대한 검색결과가 없습니다.</div>
         <?php else: ?>
             <?php $__currentLoopData = $result_data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $searchlist): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-              <div class="big-container" style="width: 20%; height: 20%; border:1px solid;  margin:2%; border-radius:3px; display:inline-block ">
-                  <div class="image-container" style="width: 100%; height:100%; display: inline-block  ">
+              <div class="big-container" style="width: 20%; height: 250px; border:1px solid;  margin:2%; border-radius:3px; display:inline-block ">
+                  <div class="image-container" style="width: 100%; height:70%; display: inline-block  ">
                       <div class="image-small" style="width: 100%; height:100%; display:inline-block; position:relative">
-                  <img src="\storage\app\public\<?php echo e($searchlist->filename); ?>" style="width:100%; height:100%; object-fit: cover;" >
+                  <img src="/imglib/<?php echo e($searchlist->filename); ?>" style="width:100%; height:100%; object-fit: cover;" >
                   </div>    
                   </div>
                   <div class="medium-container">
@@ -52,12 +52,9 @@
                       </div>
                       <div class="small-container">
                           <div class="text-center">
-                              <a class="btn btn-outline-dark mt-auto" href="/public/product/<?php echo e($searchlist->no); ?>" >
+                          <a class="btn btn-outline-dark mt-auto" href="/product/<?php echo e($searchlist->no); ?>" >
                                   작품 보기
                               </a>
-                              <?php if(auth()->guard()->check()): ?>
-                              <a class="btn btn-outline-dark mt-auto" href="">작품 삭제</a>
-                              <?php endif; ?>
                           </div>
                       </div>
                   </div>

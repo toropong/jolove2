@@ -42,9 +42,10 @@
                 <?php if(isset($lists)): ?>
                 <?php $__currentLoopData = $lists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $list): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 
-                    <div class="big-container" style="width: 20%; height: 20%; border:1px solid; margin:2%; border-radius:3px; display:inline-block ">
+                    
+                    <div class="big-container" style="width: 20%; height: 250px; border:1px solid; margin:2%; border-radius:3px; display:inline-block ">
                         <!-- Product image-->
-                        <div class="image-container" style="width: 100%; height:100%; display: inline-block  ">
+                        <div class="image-container" style="width: 100%; height:70%; display: inline-block  ">
                             <div class="image-small" style="width: 100%; height:100%; display:inline-block; position:relative">
                         <img src="/imglib/<?php echo e($list['filename']); ?>" style="width:100%; height:100%; object-fit: cover;" >
                         </div>    
@@ -54,12 +55,11 @@
                                     <h5 class="fw-bolder"><?php echo e($list['title']); ?></h5>
                                 </div>
                             </div>
-                            <div class="small-container">
-                                <div class="text-center" style="padding: 10px;">
+                            <div class="small-container" style="margin-bottom: 10%">
+                                <div class="text-center">
                                     <a class="btn btn-outline-dark mt-auto" href="/product/<?php echo e($list['no']); ?>" >
                                         작품 보기
                                     </a>
-                                    
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
 <?php endif; ?>      
 
                 </div>
-                <div style="text-align: center; margin-top:50px;"> 
+                <div style="text-align: center; margin-top:10%;"> 
                 <?php echo e($lists->links()); ?>         
                 </div>
             </div>
