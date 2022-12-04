@@ -164,7 +164,7 @@
                                     <thead>
                                         
                                         <tr>
-                                            <th>이름</th>
+                                            <th>이름이름이름</th>
                                             <th>이메일</th>
                                             <th>전화번호</th>
                                             <th>id</th>
