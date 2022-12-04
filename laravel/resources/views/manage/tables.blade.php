@@ -70,7 +70,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        관리자
                     </div>
                 </nav>
             </div>
@@ -112,7 +112,7 @@
                                             <td>
                                                 <form name="delete" action="w_remove/{{$works->no}}" method="post">
                                                   @csrf
-                                                  <input type="submit" name="remove" id="removes" value="삭제" onclick="removeCheck()">
+                                                  <button type="submit" class="btn btn-sm btn-primary" name="remove" id="removes" value="삭제" onclick="removeCheck()">
                                                 </form>
                                               </td>
                                         </tr>

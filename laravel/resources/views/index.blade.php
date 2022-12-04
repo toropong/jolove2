@@ -50,7 +50,7 @@
                         </div>    
                         </div>
                         <div class="medium-container">
-                                <div class="text-center">
+                                <div class="text-center" style="margin-top: 10px">
                                     <h6 class="fw-bolder">{{$list['title']}}</h6>
                                 </div>
                             </div>
