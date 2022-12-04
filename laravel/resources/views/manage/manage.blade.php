@@ -183,7 +183,7 @@
                                             <td>
                                                 <form name="delete" action="remove/{{$manages->id}}" method="post">
                                                   @csrf
-                                                  <button type="submit" class="btn btn-sm btn-primary" name="remove" id="removes" value="삭제" onclick="removeCheck()">
+                                                  <input type="submit" name="remove" id="removes" value="삭제" onclick="removeCheck()">
                                                 </form>
                                               </td>
                                         </tr>

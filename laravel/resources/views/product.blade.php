@@ -13,12 +13,6 @@
         {{-- <link href="/css/style.css" rel="stylesheet" /> --}}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <style>
-        @import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
-        .jm-font{
-            font-family: 'Jeju Hallasan', cursive;
-        }
-    </style>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -79,8 +73,9 @@
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
+                            <h5 class="card-title">이미지 2</h2>
                             @foreach($product as $products)
-                           <img class="rounded mb-4 mb-lg-0" src= "/imglib/{{$products['subimage_1']}}" width="200" height="200" onerror="this.style.display='none'" />
+                           <img class="rounded mb-4 mb-lg-0" src= "/imglib/{{$products['subimage_1']}}" width="280" height="200" onerror="this.style.display='none'" />
                         @endforeach
                         </div>
                     </div>
@@ -88,8 +83,9 @@
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
+                            <h5 class="card-title">이미지 3</h2>
                             @foreach($product as $products)
-                            <img class=rounded mb-4 mb-lg-0" src= "/imglib/{{$products['subimage_2']}}" width="200" height="200"onerror="this.style.display='none'"/>
+                            <img class=rounded mb-4 mb-lg-0" src= "/imglib/{{$products['subimage_2']}}" width="280" height="200"onerror="this.style.display='none'"/>
                             @endforeach
                         </div>
 
@@ -98,8 +94,9 @@
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
+                            <h5 class="card-title">이미지 4</h2>
                             @foreach($product as $products)
-                            <img class="rounded mb-4 mb-lg-0"src= "/imglib/{{$products['subimage_3']}}" width="200" height="200" onerror="this.style.display='none'"/>
+                            <img class="rounded mb-4 mb-lg-0"src= "/imglib/{{$products['subimage_3']}}" width="280" height="200" onerror="this.style.display='none'"/>
                             @endforeach
                         </div>
                     </div>
@@ -107,6 +104,7 @@
                 <div class="col-md-4 mb-5">
                     <div class="card h-100" style="width: 750px" >
                         <div class="card-body">
+                            <h5 class="card-title">시연영상</h2>
                             @foreach($product as $products)
                             <video src= "/imglib/{{$products['video']}}" width="700" height="400"  type="video/mp4" controls>
                         </video>
