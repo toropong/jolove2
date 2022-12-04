@@ -42,7 +42,7 @@
                 @foreach($lists as $list)
                 {{-- <div class="col mb-5"> --}}
                     
-                    <div class="big-container" style="width: 20%; height: 250px; border:1px solid; margin:2%; border-radius:3px; display:inline-block ">
+                    <div class="big-container" style="width: 20%; height: 270px; border:1px solid; margin:2%; border-radius:3px; display:inline-block ">
                         <!-- Product image-->
                         <div class="image-container" style="width: 100%; height:70%; display: inline-block  ">
                             <div class="image-small" style="width: 100%; height:100%; display:inline-block; position:relative">
@@ -51,7 +51,7 @@
                         </div>
                         <div class="medium-container">
                                 <div class="text-center">
-                                    <div class="fw-bolder">{{$list['title']}}<div>
+                                    <h5 class="fw-bolder">{{$list['title']}}</h5>
                                 </div>
                             </div>
                             <div class="small-container" style="margin-bottom: 10%">
