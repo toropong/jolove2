@@ -10,6 +10,31 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <style>
+            .myButton {
+	box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	background-color:#ffc477;
+	border-radius:6px;
+	border:1px solid #eeb44f;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #cc9f52;
+}
+.myButton:hover {
+	background-color:#fb9e25;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+        </style>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -112,7 +137,7 @@
                                             <td>
                                                 <form name="delete" action="w_remove/{{$works->no}}" method="post">
                                                   @csrf
-                                                  <input type="submit" name="remove" id="removes" value="삭제" onclick="removeCheck()">
+                                                  <button type="submit" class="myButton" name="remove" id="removes" value="삭제" onclick="removeCheck()">삭제</button>
                                                 </form>
                                               </td>
                                         </tr>

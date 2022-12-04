@@ -12,8 +12,31 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        {{-- <link href="/css/styles.css" rel="stylesheet" /> --}}
+      <style>
+        .myButton {
+	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	background-color:#79bbff;
+	border-radius:6px;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #528ecc;
+}
+.myButton:hover {
+	background-color:#378de5;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+      </style>
     </head>
     <body>
         <!-- Navigation-->
@@ -36,7 +59,7 @@
                 <input type="submit" value="검색">
             </form>
             <div class="container px-4 px-lg-5 mt-5" id= first-display>
-                <button onclick="showdisplay()" style="margin-bottom: 10px">리스트변경</button>
+                <button onclick="showdisplay()" class="myButton" style="margin-bottom: 10px">리스트변경</button>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 @if(isset($lists))
                 @foreach($lists as $list)
@@ -78,8 +101,7 @@
             
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 
-<div class="container_2" style="width: 80%; display:none; margin-bottom:20px;" id="second-display" >
-    {{-- <h2>졸업작품</h2> --}}<button onclick="showdisplay2()">리스트변경</button>
+<div class="container_2" style="width: 80%; display:none; margin-bottom:20px;" id="second-display" ><button class="myButton" onclick="showdisplay2()">리스트변경</button>
     <h3><code>.졸업작품</code></h3> 
     @if(isset($lists))
     @foreach($lists as $list)           
@@ -96,7 +118,7 @@
         <tr>
           <td>{{$list['no']}}</td>
           <td><a href="/product/{{$list['no']}}">{{$list['title']}}</a></td>
-          <td><a href="/product/{{$list['no']}}">{{$list['cont']}}</a></td>
+          <td>{{$list['cont']}}</td>
         </tr>
       </tbody>
     </table>
