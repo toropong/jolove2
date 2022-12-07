@@ -25,10 +25,10 @@
             <h2 class="title-image" style="margin-top: 1rem;">작품명 : <?php echo e($products['title']); ?></h2>
            
             <p>대표이미지</p>
-            <div class="row gx-4 gx-lg-5 align-items-center " style="width: 100%; padding:20px;">
+            <div class="row gx-4 gx-lg-5 align-items-center " style="width: 100%;  padding:20px;">
            
                 
-                <div class="col-lg-7" style="width: 30%;"><img class="img-fluid rounded mb-4 mb-lg-0" src="/imglib/<?php echo e($products['filename']); ?>" width="400" height="300" style="border-style: solid;" onerror="this.style.display='none'" /></div>
+                <div class="col-lg-7" style="width: 30%; height:200px;"><img class=" rounded mb-4 mb-lg-0" src="/imglib/<?php echo e($products['filename']); ?>" width="400" height="100%" style="border-style: solid;" onerror="this.style.display='none'" /></div>
                 <div class="col-lg-5" style="width: 200px; height:200px; border:1px solid;">
                     <p><?php echo e($products['cont']); ?></p>
                 </div>
@@ -71,9 +71,9 @@
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h2 class="card-title">이미지 2</h2>
+                            <h5 class="card-title">이미지 2</h2>
                             <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                           <img class="img-fluid rounded mb-4 mb-lg-0" src= "/imglib/<?php echo e($products['subimage_1']); ?>" width="200" height="200" onerror="this.style.display='none'" />
+                           <img class="rounded mb-4 mb-lg-0" src= "/imglib/<?php echo e($products['subimage_1']); ?>" width="280" height="200" onerror="this.style.display='none'" />
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
@@ -81,9 +81,9 @@
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h2 class="card-title">이미지 3</h2>
+                            <h5 class="card-title">이미지 3</h2>
                             <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <img class="img-fluid rounded mb-4 mb-lg-0" src= "/imglib/<?php echo e($products['subimage_2']); ?>" width="200" height="200"onerror="this.style.display='none'"/>
+                            <img class=rounded mb-4 mb-lg-0" src= "/imglib/<?php echo e($products['subimage_2']); ?>" width="280" height="200"onerror="this.style.display='none'"/>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
 
@@ -92,17 +92,17 @@
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h2 class="card-title">이미지 4</h2>
+                            <h5 class="card-title">이미지 4</h2>
                             <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <img class="img-fluid rounded mb-4 mb-lg-0"src= "/imglib/<?php echo e($products['subimage_3']); ?>" width="200" height="200" onerror="this.style.display='none'"/>
+                            <img class="rounded mb-4 mb-lg-0"src= "/imglib/<?php echo e($products['subimage_3']); ?>" width="280" height="200" onerror="this.style.display='none'"/>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
-                    <div class="card h-100" >
+                    <div class="card h-100" style="width: 750px" >
                         <div class="card-body">
-                            <h2 class="card-title">시연영상</h2>
+                            <h5 class="card-title">시연영상</h2>
                             <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <video src= "/imglib/<?php echo e($products['video']); ?>" width="700" height="400"  type="video/mp4" controls>
                         </video>

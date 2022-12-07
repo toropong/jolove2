@@ -12,8 +12,31 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        
+      <style>
+        .myButton {
+	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	background-color:#79bbff;
+	border-radius:6px;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #528ecc;
+}
+.myButton:hover {
+	background-color:#378de5;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+      </style>
     </head>
     <body>
         <!-- Navigation-->
@@ -37,13 +60,13 @@
                 <input type="submit" value="검색">
             </form>
             <div class="container px-4 px-lg-5 mt-5" id= first-display>
-                <button onclick="showdisplay()" style="margin-bottom: 10px">리스트변경</button>
+                <button onclick="showdisplay()" class="myButton" style="margin-bottom: 10px">리스트변경</button>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <?php if(isset($lists)): ?>
                 <?php $__currentLoopData = $lists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $list): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 
                     
-                    <div class="big-container" style="width: 20%; height: 250px; border:1px solid; margin:2%; border-radius:3px; display:inline-block ">
+                    <div class="big-container" style="width: 20%; height: 270px; border:1px solid; margin:2%; border-radius:3px; display:inline-block ">
                         <!-- Product image-->
                         <div class="image-container" style="width: 100%; height:70%; display: inline-block  ">
                             <div class="image-small" style="width: 100%; height:100%; display:inline-block; position:relative">
@@ -51,8 +74,8 @@
                         </div>    
                         </div>
                         <div class="medium-container">
-                                <div class="text-center">
-                                    <h5 class="fw-bolder"><?php echo e($list['title']); ?></h5>
+                                <div class="text-center" style="margin-top: 10px">
+                                    <h6 class="fw-bolder"><?php echo e($list['title']); ?></h6>
                                 </div>
                             </div>
                             <div class="small-container" style="margin-bottom: 10%">
@@ -79,8 +102,7 @@
             
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 
-<div class="container_2" style="width: 80%; display:none; margin-bottom:20px;" id="second-display" >
-    <button onclick="showdisplay2()">리스트변경</button>
+<div class="container_2" style="width: 80%; display:none; margin-bottom:20px;" id="second-display" ><button class="myButton" onclick="showdisplay2()">리스트변경</button>
     <h3><code>.졸업작품</code></h3> 
     <?php if(isset($lists)): ?>
     <?php $__currentLoopData = $lists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $list): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>           
@@ -97,7 +119,7 @@
         <tr>
           <td><?php echo e($list['no']); ?></td>
           <td><a href="/product/<?php echo e($list['no']); ?>"><?php echo e($list['title']); ?></a></td>
-          <td><a href="/product/<?php echo e($list['no']); ?>"><?php echo e($list['cont']); ?></a></td>
+          <td><?php echo e($list['cont']); ?></td>
         </tr>
       </tbody>
     </table>

@@ -39,8 +39,8 @@ class ManagerController extends Controller
      $data1 = Analytics::fetchTotalVisitorsAndPageViews(Period::days(0));
      $dat1 =Arr::get($data1[0], 'visitors');
 
-     //   $level = Auth::user()->level;
-     //   if($level==2){
+       $level = Auth::user()->level;
+       if($level==2){
         $data["manage"] = [];
         $data["manage"] = DB::table('users')->select('*')->get();
         
@@ -55,10 +55,10 @@ class ManagerController extends Controller
 
        ]);
        
-     //   }
-     //   else{
-     //       echo"<script>alert('권한이 없습니다.'); history.back();</script>";
-     //   }
+       }
+       else{
+           echo"<script>alert('권한이 없습니다.'); history.back();</script>";
+       }
     }
 
     function tables(Request $request){
