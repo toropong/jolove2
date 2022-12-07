@@ -46,7 +46,7 @@
                   </div>
                   <div class="medium-container">
                           <div class="text-center" style="margin-top:10px ">
-                              <h5 class="fw-bolder">{{$searchlist->title}}</h5>
+                              <h6 class="fw-bolder">{{$searchlist->title}}</h5>
                           </div>
                       </div>
                       <div class="small-container" style="margin-bottom: 10%">
