@@ -38,7 +38,7 @@
         <div>''에 대한 검색결과가 없습니다.</div>
         @else
             @foreach ($result_data as $searchlist)
-              <div class="big-container" style="width: 20%; height: 250px; border:1px solid;  margin:2%; border-radius:3px; display:inline-block ">
+              <div class="big-container" style="width: 20%; height: 270px; border:1px solid;  margin:2%; border-radius:3px; display:inline-block ">
                   <div class="image-container" style="width: 100%; height:70%; display: inline-block  ">
                       <div class="image-small" style="width: 100%; height:100%; display:inline-block; position:relative">
                   <img src="/imglib/{{$searchlist->filename}}" style="width:100%; height:100%; object-fit: cover;" >
@@ -49,7 +49,7 @@
                               <h5 class="fw-bolder">{{$searchlist->title}}</h5>
                           </div>
                       </div>
-                      <div class="small-container">
+                      <div class="small-container" style="margin-bottom: 10%">
                           <div class="text-center">
                           <a class="btn btn-outline-dark mt-auto" href="/product/{{$searchlist->no}}" >
                                   작품 보기
